@@ -257,8 +257,63 @@
 <p>3.提前注册好一个github账号</p>
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>1.在本地找个目录放博客源文件，路径中不要有中文</p>
 <p>2.在选定的目录中，右键<code>Git Bash Here</code></p>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271447933.jpg"></p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271504186.jpg"></p>
 <p>3.使用npm命令安装Hexo,输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>构建好的效果：</p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271507566.jpg"></p>
+<p>4.cd进入blog</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>访问127.0.0.1：4000查看网站雏形<br>5.配置SSH</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh#检查本机已存在的SSH密钥</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果提示：No such file or directory说明你是第一次使用git。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C&quot;邮件地址&quot;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后连续3次回车，生成一个文件，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制内容粘贴到github个人主页-&gt;设置-&gt;SSH and GPG keys-&gt;New SSH key：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271520855.jpg"></p>
+<ul>
+<li>尝试SSH连接，测试是否成功</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com#邮箱不需要改动</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果提示Are you sure you want to continue connecting (yes&#x2F;no)?，输入yes，然后回看到下面这个，就算成功：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi xxx!You&#x27;ve successfully authenticated,but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在文件目录blog下打开cmd（以管理员身份），输入：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git -save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回<code>Git Bash Here</code>继续配置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br><span class="line">git config --global user.email &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>6.准备上传代码</p>
+<ul>
+<li>在github上新建一个存储库，命名为<code>”用户名.github.io“</code></li>
+<li>编辑blog下的_config.yml文件，在底部：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:用户名/存储库名.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意保持格式，缩进不对，可能导致上传失败</li>
+<li>上传</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d#等待刷新</span><br></pre></td></tr></table></figure>
+<ul>
+<li>存储库-&gt;setting-&gt;pages：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271548583.jpg"></p>
 
     </div>
     <!--文末结束语-->
