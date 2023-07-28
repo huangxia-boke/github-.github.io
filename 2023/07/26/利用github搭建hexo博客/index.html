@@ -15,7 +15,7 @@
 
 
 
-<title>利用github搭建hexo博客~ | Hexo</title>
+<title>github搭建博客 | Hexo</title>
 
 
 
@@ -153,7 +153,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        利用github搭建hexo博客~
+        github搭建博客
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -214,18 +214,18 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        利用github搭建hexo博客~
+        github搭建博客
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-07-27 15:58:48</time>
+          <time>2023-07-28 17:06:27</time>
           <span class="text-gray-400">·</span>
-          <span>1 min</span>
+          <span>2 min</span>
           <span class="text-gray-400">·</span>
-          <span>430 words</span>
+          <span>660 words</span>
         </section>
       </div>
     </div>
@@ -236,19 +236,32 @@
 <h2 id="准备前提"><a href="#准备前提" class="headerlink" title="准备前提"></a>准备前提</h2><p>1.提前安装好<a target="_blank" rel="noopener" href="https://nodejs.org/en">node</a></p>
 <p>2.提前安装好<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git</a></p>
 <p>3.提前注册好一个github账号</p>
-<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>1.在本地找个目录放博客源文件，路径中不要有中文</p>
-<p>2.在选定的目录中，右键<code>Git Bash Here</code></p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>1.在本地找个目录放博客源文件，路径中不要有中文（这里我新建了一个github文件夹用来存放）</p>
+<p>2.进入选定的目录，在空白处点击右键选择<code>Open Git Bash here</code>打开</p>
 <p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271504186.jpg"></p>
 <p>3.使用npm命令安装Hexo,输入：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
 <p>构建好的效果：</p>
 <p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271507566.jpg"></p>
+<h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><blockquote>
+<ul>
+<li>.deploy_git   #hexo deploy生成的文件</li>
+<li>node_modules   #npm组件</li>
+<li>public   #生成的静态网页文件</li>
+<li>scaffolds   #模板</li>
+<li>source   #博客正文和其他源文件</li>
+<li>_posts   #文章</li>
+<li>themes   #主题</li>
+<li>_config.yml   #全局配置文件</li>
+<li>package.json   #定义了hexo所需要的各种模块</li>
+</ul>
+</blockquote>
 <p>4.cd进入blog</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<p>访问127.0.0.1：4000查看网站雏形<br>5.配置SSH</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh#检查本机已存在的SSH密钥</span><br></pre></td></tr></table></figure>
+<p>访问127.0.0.1：4000可预先查看网站雏形<br>5.配置SSH</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh     #检查本机已存在的SSH密钥</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>如果提示：No such file or directory说明你是第一次使用git。</li>
@@ -258,11 +271,12 @@
 <ul>
 <li>然后连续3次回车，生成一个文件，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制内容粘贴到github个人主页-&gt;设置-&gt;SSH and GPG keys-&gt;New SSH key：</li>
 </ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281605926.png" alt="image-20230728160515899"></p>
 <p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271520855.jpg"></p>
 <ul>
 <li>尝试SSH连接，测试是否成功</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com#邮箱不需要改动</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com     #邮箱不需要改动</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>如果提示Are you sure you want to continue connecting (yes&#x2F;no)?，输入yes，然后回看到下面这个，就算成功：</li>
@@ -275,14 +289,18 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git -save</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>返回<code>Git Bash Here</code>继续配置</li>
+<li>返回<code>Open Git Bash here</code>继续配置</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br><span class="line">git config --global user.email &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
 
 <p>6.准备上传代码</p>
 <ul>
 <li>在github上新建一个存储库，命名为<code>”用户名.github.io“</code></li>
-<li>编辑blog下的_config.yml文件，在底部：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml     #进入_config.yml全局配置文件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在底部进行编辑：</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:用户名/存储库名.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
 
@@ -292,9 +310,28 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d#等待刷新</span><br></pre></td></tr></table></figure>
 <ul>
+<li>如果上传过程中遇到如下问题，请仔细比对blog目录下的_config.yml中的用户名及存储库名是否正确</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281554571.png" alt="image-20230728155454764"></p>
+<ul>
 <li>存储库-&gt;setting-&gt;pages：</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271548583.jpg"></p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281600437.png" alt="image-20230728160034519"></p>
+<ul>
+<li>至此，博客雏形搭建完毕！</li>
+<li>也可为个人博客更改<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281700425.png" alt="image-20230728170038825"></p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281702692.png" alt="image-20230728170203688"></p>
+<ul>
+<li>将下载好的安装包存放到\blog\themes目录下</li>
+<li>在\blog下的_config.yml中找到theme一栏</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281704643.png" alt="image-20230728170440697"></p>
+<ul>
+<li>将此处修改成主题安装包的名字即可,输入以下命令上传主题<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
+<li>下一步开始<a target="_blank" rel="noopener" href="https://huangxia-boke.github.io/2023/07/27/PicGo/">部署博客</a></li>
+</ul>
 
   </article>
   <!-- tag -->
@@ -307,7 +344,7 @@
       
         <a href="/2023/07/27/PicGo/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          PicGo
+          typora+PicGo
         </a>
       
     </div>

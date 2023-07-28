@@ -15,7 +15,7 @@
 
 
 
-<title>PicGo | Hexo</title>
+<title>typora+PicGo | Hexo</title>
 
 
 
@@ -153,7 +153,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        PicGo
+        typora+PicGo
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -214,36 +214,85 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        PicGo
+        typora+PicGo
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-07-27 16:51:16</time>
+          <time>2023-07-28 16:50:24</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>87 words</span>
+          <span>293 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="typora-PicGo"><a href="#typora-PicGo" class="headerlink" title="typora+PicGo"></a>typora+PicGo</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>1.typora是一个Markdown格式的编辑器</p>
+    <h1 id="typora-PicGo"><a href="#typora-PicGo" class="headerlink" title="typora+PicGo"></a>typora+PicGo</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>1.typora是一个Markdown格式的编辑器，可对博客文章进行编辑</p>
 <p>2.PicGo是一个自动上传图片到图床的工具</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>1.[typora自动上传图片]</p>
-<p>2.[PicGo官网]</p>
-<p>3.[PicGo手册]</p>
-<h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><h3 id="图片上传的整体思路"><a href="#图片上传的整体思路" class="headerlink" title="图片上传的整体思路"></a>图片上传的整体思路</h3><p>1.下载并安装[node.js]</p>
-<p>2.下载并安装[PicGo]</p>
-<p>3.typora-偏好设置</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>1.下载<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33957967/article/details/124572413">typora</a></p>
+<p>2.下载<a target="_blank" rel="noopener" href="https://molunerfinn.com/PicGo/">PicGo</a></p>
+<p>3.<a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc/zh/guide/config.html#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85">PicGo手册</a></p>
+<p>1.下载<a target="_blank" rel="noopener" href="https://nodejs.org/en">node.js</a></p>
+<h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><p>3.typora-偏好设置</p>
+<ul>
+<li>勾选<code>“对本地位置的图片应用上述规则；对网络位置的图片应用上述规则”</code></li>
+<li>上传服务选择<code>“PicGo(app)”</code></li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271642528.jpg"></p>
 <p>4.PicGo设置</p>
+<ul>
+<li>在显示的图床中只保留<code>“GitHub”</code></li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271647196.png" alt="image-20230727164740774"></p>
+<ul>
+<li>点击图床设置，新建图床，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ui4y1x7Cq">设置</a></li>
+</ul>
 <p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307271650142.png" alt="image-20230727165030910"></p>
+<p>5.测试typora</p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281641347.png" alt="image-20230728163957190"></p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281641904.png" alt="image-20230728164101735"></p>
+<ul>
+<li>图片上传成功</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281641365.png" alt="image-20230728164143046"></p>
+<ul>
+<li>环境搭建完成!</li>
+</ul>
+<h2 id="新建博客文章"><a href="#新建博客文章" class="headerlink" title="新建博客文章"></a>新建博客文章</h2><h4 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h4><blockquote>
+<ul>
+<li>hexo new “我的博客”   #新建文章</li>
+<li>hexo new page “第一页”   #新建页面</li>
+<li>hexo generate   #生成</li>
+<li>hexo server   #启动服务预览</li>
+<li>hexo deploy   #部署</li>
+<li>hexo clean   #清除缓存</li>
+<li>hexo version   #查看版本</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>hexo server -s   #静态模式</li>
+<li>hexo server -p 50000   #更改端口</li>
+<li>hexo server -i 192.168.1.1   #自定义IP</li>
+<li>hexo server -generate   #生成并本地预览</li>
+<li>hexo d -generate   #生成并上传</li>
+</ul>
+</blockquote>
+<ul>
+<li>可进入目录下</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307281647532.png" alt="image-20230728164752461"></p>
+<ul>
+<li><code>.md</code>后缀的是你创建的文章</li>
+<li>右击<code>“Typora”</code>方式打开</li>
+<li>接下来就可以进行文章的编写啦！</li>
+</ul>
+<p><a href="">编写</a></p>
 
   </article>
   <!-- tag -->
@@ -254,16 +303,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2023/07/27/HEXO/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="/2023/07/28/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          HEXO
+          信息收集
         </a>
       
     </div>
     <div>
       
         <a href="/2023/07/26/%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          利用github搭建hexo博客~
+          github搭建博客
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
