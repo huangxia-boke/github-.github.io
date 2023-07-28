@@ -15,7 +15,7 @@
 
 
 
-<title>归档 | Hexo</title>
+<title>Hexo</title>
 
 
 
@@ -196,182 +196,419 @@
 </div>
 
   <main class="p-12">
-    <section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
-  <div class="flex flex-col h-48 items-center justify-center">
-    <h1 class="site-title text-4xl leading-relaxed">
-      Hexo
-    </h1>
-    <p class="text-gray-500 mt-2">
-      
-    </p>
-  </div>
-  
-  
-    
-    
-      <div class="relative pointer-events-none">
-        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
+    <!-- css -->
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="/lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-07-28 08:43:11</time>
+          <span class="text-gray-400">·</span>
+          <span>1 min</span>
+          <span class="text-gray-400">·</span>
+          <span>447 words</span>
+        </section>
       </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h1 id="重要端口及服务"><a href="#重要端口及服务" class="headerlink" title="重要端口及服务"></a>重要端口及服务</h1><table>
+<thead>
+<tr>
+<th>port</th>
+<th>service</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td>FTP</td>
+<td>FTP控制端口，检查匿名登录、弱口令</td>
+</tr>
+<tr>
+<td>22</td>
+<td>SSH</td>
+<td>SSH远程登录协议，检查弱口令</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Telnet</td>
+<td>Telnet终端仿真协议</td>
+</tr>
+<tr>
+<td>53</td>
+<td>DNS服务</td>
+<td></td>
+</tr>
+<tr>
+<td>80</td>
+<td>Web</td>
+<td>检查常见Web漏洞及管理后台</td>
+</tr>
+<tr>
+<td>111</td>
+<td>NFS</td>
+<td>网络文件系统</td>
+</tr>
+<tr>
+<td>389</td>
+<td>LDAP</td>
+<td>轻型目录访问协议，检查是否存在匿名访问</td>
+</tr>
+<tr>
+<td>443</td>
+<td>OpenSSL</td>
+<td>检查心脏滴血及Web漏洞</td>
+</tr>
+<tr>
+<td>445</td>
+<td>SMB</td>
+<td>检查是否存在MS17-010、MS08-067漏洞</td>
+</tr>
+<tr>
+<td>512</td>
+<td>Rexec</td>
+<td>检查远程shell命令及暴力破解</td>
+</tr>
+<tr>
+<td>873</td>
+<td>Rsync</td>
+<td>检查匿名登录、弱口令</td>
+</tr>
+<tr>
+<td>1433</td>
+<td>SQL Server</td>
+<td>数据库服务</td>
+</tr>
+<tr>
+<td>1521</td>
+<td>Oracle</td>
+<td>数据库服务</td>
+</tr>
+<tr>
+<td>2049</td>
+<td>NFS</td>
+<td>NFS未授权访问</td>
+</tr>
+<tr>
+<td>2181</td>
+<td>Zookeeper</td>
+<td>分布式协调系统</td>
+</tr>
+<tr>
+<td>2375</td>
+<td>Docker Remote</td>
+<td>API未授权访问</td>
+</tr>
+<tr>
+<td>3306</td>
+<td>MySQL</td>
+<td>数据库服务</td>
+</tr>
+<tr>
+<td>3389</td>
+<td>RDP</td>
+<td>远程桌面</td>
+</tr>
+<tr>
+<td>4848</td>
+<td>GlassFish</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>5432</td>
+<td>PostgreSQL</td>
+<td>数据库服务</td>
+</tr>
+<tr>
+<td>5601</td>
+<td>Kibana</td>
+<td>开源分析及可视化平台</td>
+</tr>
+<tr>
+<td>5672</td>
+<td>RabbitMQ</td>
+<td>开源消息队列服务软件</td>
+</tr>
+<tr>
+<td>5900</td>
+<td>VNC</td>
+<td>远程桌面控制软件，检查弱口令</td>
+</tr>
+<tr>
+<td>5984</td>
+<td>CouchDB</td>
+<td>数据库服务</td>
+</tr>
+<tr>
+<td>6379</td>
+<td>Redis</td>
+<td>数据库服务</td>
+</tr>
+<tr>
+<td>7001</td>
+<td>Weblogic</td>
+<td>Weblogic Console默认端口</td>
+</tr>
+<tr>
+<td>8000-9090</td>
+<td>Web</td>
+<td>常见Web端口，运维一般将管理后台开在这些非80端口上</td>
+</tr>
+<tr>
+<td>8080</td>
+<td>Jenkins</td>
+<td></td>
+</tr>
+<tr>
+<td>8080</td>
+<td>Kubernetes Api Server</td>
+<td></td>
+</tr>
+<tr>
+<td>8081</td>
+<td>Apache-Flink</td>
+<td></td>
+</tr>
+<tr>
+<td>8089</td>
+<td>Druid</td>
+<td></td>
+</tr>
+<tr>
+<td>8090</td>
+<td>Confluence</td>
+<td></td>
+</tr>
+<tr>
+<td>8095</td>
+<td>Atlassian Crowd</td>
+<td></td>
+</tr>
+<tr>
+<td>8161</td>
+<td>Active MQ</td>
+<td></td>
+</tr>
+<tr>
+<td>8888</td>
+<td>Jupyter Notebook</td>
+<td></td>
+</tr>
+<tr>
+<td>8983</td>
+<td>Solr</td>
+<td></td>
+</tr>
+<tr>
+<td>9000</td>
+<td>Fast-CGI</td>
+<td>对外访问可直接Get shell</td>
+</tr>
+<tr>
+<td>9060</td>
+<td>Websephere</td>
+<td>管理端口</td>
+</tr>
+<tr>
+<td>9092</td>
+<td>Kafka</td>
+<td>开源流处理平台</td>
+</tr>
+<tr>
+<td>9200</td>
+<td>Elasticsearch(http)</td>
+<td>全文搜索引擎</td>
+</tr>
+<tr>
+<td>9300</td>
+<td>Elasticsearch(tcp)</td>
+<td>全文搜索引擎</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>Virualmin&#x2F;Webmin</td>
+<td>服务器虚拟主机管理系统</td>
+</tr>
+<tr>
+<td>10051</td>
+<td>Zabbix</td>
+<td>监控系统</td>
+</tr>
+<tr>
+<td>11211</td>
+<td>Memcache</td>
+<td>分布式高速缓存系统，检查未授权访问</td>
+</tr>
+<tr>
+<td>20880</td>
+<td>Dubbo</td>
+<td>阿里巴巴开源分布式服务框架</td>
+</tr>
+<tr>
+<td>27017</td>
+<td>MongoDB</td>
+<td>数据库服务</td>
+</tr>
+<tr>
+<td>28017</td>
+<td>MongoDB</td>
+<td>数据库服务（统计页面）</td>
+</tr>
+<tr>
+<td>50030</td>
+<td>Hadoop Hive</td>
+<td></td>
+</tr>
+<tr>
+<td>50070</td>
+<td>Hadoop</td>
+<td></td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
     
-    <a href="/2023/07/28/%E9%87%8D%E8%A6%81%E7%AB%AF%E5%8F%A3%E5%8F%8A%E6%9C%8D%E5%8A%A1%E9%80%9F%E6%9F%A5/">
-      <header>
-        <h2 class="font-bold text-xl">
-          
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 28
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="/2023/07/28/DNS%E8%A7%A3%E6%9E%90/">
-      <header>
-        <h2 class="font-bold text-xl">
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+    </div>
+    <div>
+      
+        <a href="/2023/07/28/DNS%E8%A7%A3%E6%9E%90/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           DNS解析
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 28
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
     
-    
-    <a href="/2023/07/27/HEXO/">
-      <header>
-        <h2 class="font-bold text-xl">
-          HEXO
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 27
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="/2023/07/27/PicGo/">
-      <header>
-        <h2 class="font-bold text-xl">
-          PicGo
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 27
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="/2023/07/26/%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">
-      <header>
-        <h2 class="font-bold text-xl">
-          利用github搭建hexo博客~
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 26
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="/2023/07/26/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">
-      <header>
-        <h2 class="font-bold text-xl">
-          我的博客
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 26
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="/2023/07/25/markdown/">
-      <header>
-        <h2 class="font-bold text-xl">
-          test_my_site
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 25
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
-    
-    
-    <a href="/2023/07/25/hello-world/">
-      <header>
-        <h2 class="font-bold text-xl">
-          Hello World
-        </h2>
-      </header>
-      <section class="text-gray-400 my-1 text-sm time">
-        <p class="line-clamp-4">
-          
-        </p>
-        <p class="line-clamp-4">
-          7月 25
-          ·
-          1 min
-        </p>
-      </section>
-    </a>
-  
+
+  </div>
 </section>
+<!-- js inspect -->
+
+<script src="/lib/clipboard.min.js"></script>
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="/lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="/lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  })
+</script>
+<!-- tocbot end -->
+
 
   </main>
   <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
