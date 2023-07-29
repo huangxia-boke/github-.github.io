@@ -221,11 +221,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-07-29 17:15:55</time>
+          <time>2023-07-29 17:55:29</time>
           <span class="text-gray-400">·</span>
           <span>3 min</span>
           <span class="text-gray-400">·</span>
-          <span>935 words</span>
+          <span>1.1k words</span>
         </section>
       </div>
     </div>
@@ -233,6 +233,7 @@
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
     <h1 id="DNS域名解析"><a href="#DNS域名解析" class="headerlink" title="DNS域名解析"></a>DNS域名解析</h1><p>​		域名解析就是域名到IP地址的转换过程。将好记的域名解析成IP，服务由DNS服务器完成，是把域名解析到一个IP地址，然后在此IP地址的主机上将一个子目录与域名绑定</p>
+<h5 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h5><p>​		由一串用点分隔的名字组成的Internet上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位</p>
 <h2 id="域名级别"><a href="#域名级别" class="headerlink" title="域名级别"></a>域名级别</h2><p>​		域名级别是网址分类的一个标准，包括顶级域名、二级域名等。一个完整的域名由二个或二个以上部分组成，各部分之间用.来分隔</p>
 <h3 id="顶级域名"><a href="#顶级域名" class="headerlink" title="顶级域名"></a>顶级域名</h3><p>国家顶级域名：中国（.cn），美国（.us），日本（.jp）等<br>国际顶级域名：工商企业（.com），网络提供商（.net），非盈利组织（.org）等<br><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202307291110906.png"></p>
 <h3 id="子域名"><a href="#子域名" class="headerlink" title="子域名"></a>子域名</h3><p>​		在域名系统等级中属于更高一层的域。比如mail.example.com和calendar.example.com是example.com的两个子域，而example.com则是顶级域.com的子域</p>
@@ -267,7 +268,12 @@
 <ul>
 <li><code>注：若企业使用了CDN，在使用子域名爆破时可能存在一个域名对应了多个IP地址的情况</code></li>
 </ul>
-<h2 id="泛解析"><a href="#泛解析" class="headerlink" title="泛解析"></a>泛解析</h2><h1 id="Nmap网络映射器"><a href="#Nmap网络映射器" class="headerlink" title="Nmap网络映射器"></a>Nmap网络映射器</h1><p>快速地扫描大型网络。对目标主机进行一系列的测试，利用测试结果建立相应目标主机的Nmap指纹，然后Nmap会对指纹进行匹配，最终输出相应的结果</p>
+<h2 id="泛解析"><a href="#泛解析" class="headerlink" title="泛解析"></a>泛解析</h2><p>​		所谓“泛解析“是指：利用通配符*来做子域名以实现所有的子域名均指向同一IP地址</p>
+<h4 id="泛解析的用途"><a href="#泛解析的用途" class="headerlink" title="泛解析的用途"></a>泛解析的用途</h4><p>1.可以让域名支持无限的子域名(这也是泛域名解析最大的用途)<br>2.防止用户错误输入导致的网站不能访问的问题<br>3.可以让直接输入网址登陆网站的用户输入简洁的网址即可访问网站</p>
+<ul>
+<li><code>注：子域名挖掘时若有一个IP对应了很多子域名的情况，可能是因为做了泛解析</code></li>
+</ul>
+<h1 id="Nmap网络映射器"><a href="#Nmap网络映射器" class="headerlink" title="Nmap网络映射器"></a>Nmap网络映射器</h1><p>快速地扫描大型网络。对目标主机进行一系列的测试，利用测试结果建立相应目标主机的Nmap指纹，然后Nmap会对指纹进行匹配，最终输出相应的结果</p>
 <h2 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h2><p>1.探测一组主机是否在线</p>
 <p>2.扫描主机端口，嗅探所提供的网络服务</p>
 <p>3.推断主机所有的操作系统</p>
