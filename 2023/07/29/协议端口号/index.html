@@ -205,6 +205,10 @@
 
 <!-- toc -->
 
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
@@ -217,18 +221,272 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-07-29 09:14:57</time>
+          <time>2023-07-29 09:17:14</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>0 words</span>
+          <span>445 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    
+    <h2 id="协议端口号"><a href="#协议端口号" class="headerlink" title="协议端口号"></a>协议端口号</h2><table>
+<thead>
+<tr>
+<th>port</th>
+<th>service</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td>FTP</td>
+<td align="left">FTP控制端口，检查匿名登录、弱口令</td>
+</tr>
+<tr>
+<td>22</td>
+<td>SSH</td>
+<td align="left">SSH远程登录协议，检查弱口令</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Telnet</td>
+<td align="left">Telnet终端仿真协议</td>
+</tr>
+<tr>
+<td>53</td>
+<td>DNS服务</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>80</td>
+<td>Web</td>
+<td align="left">检查常见Web漏洞及管理后台</td>
+</tr>
+<tr>
+<td>111</td>
+<td>NFS</td>
+<td align="left">网络文件系统</td>
+</tr>
+<tr>
+<td>389</td>
+<td>LDAP</td>
+<td align="left">轻型目录访问协议，检查是否存在匿名访问</td>
+</tr>
+<tr>
+<td>443</td>
+<td>OpenSSL</td>
+<td align="left">检查心脏滴血及Web漏洞</td>
+</tr>
+<tr>
+<td>445</td>
+<td>SMB</td>
+<td align="left">检查是否存在MS17-010、MS08-067漏洞</td>
+</tr>
+<tr>
+<td>512</td>
+<td>Rexec</td>
+<td align="left">检查远程shell命令及暴力破解</td>
+</tr>
+<tr>
+<td>873</td>
+<td>Rsync</td>
+<td align="left">检查匿名登录、弱口令</td>
+</tr>
+<tr>
+<td>1433</td>
+<td>SQL Server</td>
+<td align="left">数据库服务</td>
+</tr>
+<tr>
+<td>1521</td>
+<td>Oracle</td>
+<td align="left">数据库服务</td>
+</tr>
+<tr>
+<td>2049</td>
+<td>NFS</td>
+<td align="left">NFS未授权访问</td>
+</tr>
+<tr>
+<td>2181</td>
+<td>Zookeeper</td>
+<td align="left">分布式协调系统</td>
+</tr>
+<tr>
+<td>2375</td>
+<td>Docker Remote</td>
+<td align="left">API未授权访问</td>
+</tr>
+<tr>
+<td>3306</td>
+<td>MySQL</td>
+<td align="left">数据库服务</td>
+</tr>
+<tr>
+<td>3389</td>
+<td>RDP</td>
+<td align="left">远程桌面</td>
+</tr>
+<tr>
+<td>4848</td>
+<td>GlassFish</td>
+<td align="left">未授权访问</td>
+</tr>
+<tr>
+<td>5432</td>
+<td>PostgreSQL</td>
+<td align="left">数据库服务</td>
+</tr>
+<tr>
+<td>5601</td>
+<td>Kibana</td>
+<td align="left">开源分析及可视化平台</td>
+</tr>
+<tr>
+<td>5672</td>
+<td>RabbitMQ</td>
+<td align="left">开源消息队列服务软件</td>
+</tr>
+<tr>
+<td>5900</td>
+<td>VNC</td>
+<td align="left">远程桌面控制软件，检查弱口令</td>
+</tr>
+<tr>
+<td>5984</td>
+<td>CouchDB</td>
+<td align="left">数据库服务</td>
+</tr>
+<tr>
+<td>6379</td>
+<td>Redis</td>
+<td align="left">数据库服务</td>
+</tr>
+<tr>
+<td>7001</td>
+<td>Weblogic</td>
+<td align="left">Weblogic Console默认端口</td>
+</tr>
+<tr>
+<td>8000-9090</td>
+<td>Web</td>
+<td align="left">常见Web端口，运维一般将管理后台开在这些非80端口上</td>
+</tr>
+<tr>
+<td>8080</td>
+<td>Jenkins</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>8080</td>
+<td>Kubernetes Api Server</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>8081</td>
+<td>Apache-Flink</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>8089</td>
+<td>Druid</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>8090</td>
+<td>Confluence</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>8095</td>
+<td>Atlassian Crowd</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>8161</td>
+<td>Active MQ</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>8888</td>
+<td>Jupyter Notebook</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>8983</td>
+<td>Solr</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>9000</td>
+<td>Fast-CGI</td>
+<td align="left">对外访问可直接Get shell</td>
+</tr>
+<tr>
+<td>9060</td>
+<td>Websephere</td>
+<td align="left">管理端口</td>
+</tr>
+<tr>
+<td>9092</td>
+<td>Kafka</td>
+<td align="left">开源流处理平台</td>
+</tr>
+<tr>
+<td>9200</td>
+<td>Elasticsearch(http)</td>
+<td align="left">全文搜索引擎</td>
+</tr>
+<tr>
+<td>9300</td>
+<td>Elasticsearch(tcp)</td>
+<td align="left">全文搜索引擎</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>Virualmin&#x2F;Webmin</td>
+<td align="left">服务器虚拟主机管理系统</td>
+</tr>
+<tr>
+<td>10051</td>
+<td>Zabbix</td>
+<td align="left">监控系统</td>
+</tr>
+<tr>
+<td>11211</td>
+<td>Memcache</td>
+<td align="left">分布式高速缓存系统，检查未授权访问</td>
+</tr>
+<tr>
+<td>20880</td>
+<td>Dubbo</td>
+<td align="left">阿里巴巴开源分布式服务框架</td>
+</tr>
+<tr>
+<td>27017</td>
+<td>MongoDB</td>
+<td align="left">数据库服务</td>
+</tr>
+<tr>
+<td>28017</td>
+<td>MongoDB</td>
+<td align="left">数据库服务（统计页面）</td>
+</tr>
+<tr>
+<td>50030</td>
+<td>Hadoop Hive</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td>50070</td>
+<td>Hadoop</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
