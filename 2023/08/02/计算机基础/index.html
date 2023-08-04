@@ -221,11 +221,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-08-02 09:08:21</time>
+          <time>2023-08-04 12:41:37</time>
           <span class="text-gray-400">·</span>
-          <span>4 min</span>
+          <span>7 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.2k words</span>
+          <span>2k words</span>
         </section>
       </div>
     </div>
@@ -332,100 +332,171 @@
 <li>copy[路径\文件名   路径\文件名]                             &#x2F;&#x2F;把文件拷贝到另一个地方</li>
 <li>ipconfig                                                                      &#x2F;&#x2F;查看本机ip</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308020817018.png"></p>
+<h4 id="Windows和Linux"><a href="#Windows和Linux" class="headerlink" title="Windows和Linux"></a>Windows和Linux</h4><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308020817018.png"></p>
 <h2 id="HTTP响应码"><a href="#HTTP响应码" class="headerlink" title="HTTP响应码"></a>HTTP响应码</h2><table>
 <thead>
 <tr>
 <th>响应码</th>
+<th>提示</th>
 <th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>100</td>
+<td>Continue</td>
 <td>继续</td>
 </tr>
 <tr>
 <td>200</td>
+<td>OK</td>
 <td>成功</td>
 </tr>
 <tr>
+<td>302</td>
+<td>Found</td>
+<td>重定向</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>客户端发送附带条件的请求时，条件不满足</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>请求报文存在语法或参数错误，服务器不理解</td>
+</tr>
+<tr>
 <td>401</td>
+<td>Unauthorized</td>
 <td>未授权</td>
 </tr>
 <tr>
 <td>402</td>
+<td>Payment Requireed</td>
 <td>需付费</td>
 </tr>
 <tr>
 <td>403</td>
+<td>Forbidden</td>
 <td>禁止访问</td>
 </tr>
 <tr>
 <td>404</td>
+<td>Not Found</td>
 <td>无法找到</td>
 </tr>
 <tr>
 <td>405</td>
+<td>Method Not Allowed</td>
 <td>方法不被允许</td>
 </tr>
 <tr>
 <td>406</td>
+<td>Not Acceptable</td>
 <td>无法接受</td>
 </tr>
 <tr>
 <td>408</td>
+<td>Request Timeout</td>
 <td>请求超时</td>
 </tr>
 <tr>
 <td>409</td>
+<td>Conflict</td>
 <td>指令冲突</td>
 </tr>
 <tr>
 <td>413</td>
+<td>Request Entity Too Aarge</td>
 <td>请求实体过大</td>
 </tr>
 <tr>
 <td>414</td>
+<td>Request-URL Too Long</td>
 <td>请求URL地址过长</td>
 </tr>
 <tr>
 <td>416</td>
+<td>Requested Range Not Satisfiable</td>
 <td>请求的范围无法被满足</td>
 </tr>
 <tr>
 <td>417</td>
+<td>Expectation Failed</td>
 <td>预期内容错误</td>
 </tr>
 <tr>
 <td>426</td>
+<td>Upgrade Required</td>
 <td>需升级</td>
 </tr>
 <tr>
 <td>429</td>
+<td>Too Many Requests</td>
 <td>请求数过多</td>
 </tr>
 <tr>
 <td>431</td>
+<td>Request Header Fields Too Large</td>
 <td>请求的头字段过大</td>
 </tr>
 <tr>
 <td>450</td>
+<td>Blocked by Windows Parental Controls</td>
 <td>已被windows家长控制程序屏蔽</td>
 </tr>
 <tr>
 <td>500</td>
+<td>Internal Server Error</td>
 <td>内部服务器错误</td>
 </tr>
 <tr>
 <td>507</td>
+<td>Insufficient Storage</td>
 <td>存量不足</td>
 </tr>
 <tr>
 <td>599</td>
+<td>Network connect timeout error</td>
 <td>错误：网络连接超时</td>
 </tr>
 </tbody></table>
-<h2 id="数据包结构"><a href="#数据包结构" class="headerlink" title="数据包结构"></a>数据包结构</h2><h2 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式"></a>请求方式</h2><h4 id="http1-0版本：GET、POST、HEAD"><a href="#http1-0版本：GET、POST、HEAD" class="headerlink" title="http1.0版本：GET、POST、HEAD"></a>http1.0版本：GET、POST、HEAD</h4><h4 id="http1-0版本：GET、POST、HEAD、OPTIONS、"><a href="#http1-0版本：GET、POST、HEAD、OPTIONS、" class="headerlink" title="http1.0版本：GET、POST、HEAD、OPTIONS、"></a>http1.0版本：GET、POST、HEAD、OPTIONS、</h4><table>
+<h2 id="数据包结构"><a href="#数据包结构" class="headerlink" title="数据包结构"></a>数据包结构</h2><ul>
+<li><p>请求行：请求类型&#x2F;请求资源路径、协议的版本和类型</p>
+<ul>
+<li>GET:检索URL中标识资源的一个简单请求</li>
+<li>HEAD:与GET方法相同， 服务器只返回状态行和头标，并不返回请求文档</li>
+<li>POST:服务器接受被写入客户端输出流中的数据的请求</li>
+<li>PUT:服务器保存请求数据作为指定URI新内容的请求</li>
+<li>DELETE:服务器删除URL中命令的资源的请求</li>
+<li>OPTIONS:关于服务器支持的请求方法信息的请求</li>
+<li>TRACE: web服务器反馈Http请求和其头标的请求</li>
+<li>CONNECT :已文档化，但当前未实现的一一个方法，预留做隧道处理</li>
+</ul>
+</li>
+<li><p>请求头：一些键值对，浏览器与web服务器之间都可以发送，特定的某种含义</p>
+<ul>
+<li>HOST:主机或域名地址</li>
+<li>Accept:指浏览器或其他客户可以接爱的MIME文件格式。Servlet 可以根据它判断并返回适当的文件格式</li>
+<li>User-Agent:是客户浏览器名称</li>
+<li>Host:对应网址URL中的web名称和端口号</li>
+<li>Accept-Langeuage: 指出浏览器可以接受的语言种类，如en或en-us， 指英语</li>
+<li>connection: 用来告诉服务器是否可以维持固定的HTTP连接。http是无连接的，HTTP&#x2F;1. 1使用Keep-Alive为默认值，这样，当浏览器需要多个文件时(比如一个HTML文件和相关的图形文件)，不需要每次都建立连接</li>
+<li>Cookie:浏览器用这个属性向服务器发送Cookie。Cookie是在浏览器中寄存的小型数据体，它可以记载和服务器相关的用户信息，也可以用来实现会话功能</li>
+<li>Reforer:表明产生请求的网页URL。如比从网页&#x2F;icconcept&#x2F; index.jsp中点击一个链接到网页&#x2F;icwork&#x2F; search，在向服务器发送的GET&#x2F; icwork&#x2F; search中的请求中，Referer是http:&#x2F; &#x2F;hostname : 8080&#x2F; icconcept&#x2F; index. jsp。这个属性可以用来跟踪Web请求是从什么网站来的</li>
+<li>Content - -Type:用来表名request的内容类型。可以用HttpServletRequest的getContentType ()方法取得</li>
+<li>Accept-Charset:指出浏览器可以接受的字符编码。英文浏览器的默认值是IS0-8859-1</li>
+</ul>
+</li>
+<li><p>空行：请求头与请求体之间用一个空行隔开</p>
+</li>
+<li><p>请求体：要发送的数据</p>
+</li>
+</ul>
+<h2 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式"></a>请求方式</h2><h4 id="http1-0版本："><a href="#http1-0版本：" class="headerlink" title="http1.0版本："></a>http1.0版本：</h4><p>​		GET、POST、HEAD</p>
+<h4 id="http1-0版本：-1"><a href="#http1-0版本：-1" class="headerlink" title="http1.0版本："></a>http1.0版本：</h4><p>​		GET、POST、HEAD、OPTIONS、DELETE、TRACE、CONNECT、PUT、PATCH</p>
+<table>
 <thead>
 <tr>
 <th>方法</th>
@@ -469,6 +540,14 @@
 <td>是对 PUT 方法的补充，用来对已知资源进行局部更新</td>
 </tr>
 </tbody></table>
+<h4 id="GET和POST"><a href="#GET和POST" class="headerlink" title="GET和POST"></a>GET和POST</h4><h5 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h5><ul>
+<li>都可以创建数组array，数组包含键值对（key&#x3D;value），其中的键为表单控件的名称，值为用户输入的数据</li>
+<li>分别被视为$_GET和$_POST，是超全局变量</li>
+</ul>
+<h5 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h5><ul>
+<li>GET型方式：将用户发送的数据拼接到URL中，并且发送的数据量较小，不安全</li>
+<li>POST型方式：参数放在请求包中的请求数据中，查看必须使用工具查看，发送的数据量较大，安全性较高</li>
+</ul>
 
   </article>
   <!-- tag -->
