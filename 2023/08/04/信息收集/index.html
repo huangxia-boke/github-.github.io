@@ -205,6 +205,10 @@
 
 <!-- toc -->
 
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
@@ -217,18 +221,90 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-08-04 14:14:18</time>
+          <time>2023-08-04 17:33:12</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>0 words</span>
+          <span>334 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    
+    <h1 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h1><h2 id="企查查"><a href="#企查查" class="headerlink" title="企查查"></a><a target="_blank" rel="noopener" href="https://www.qcc.com/">企查查</a></h2><h2 id="爱企查"><a href="#爱企查" class="headerlink" title="爱企查"></a><a target="_blank" rel="noopener" href="https://aiqicha.baidu.com/">爱企查</a></h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041646171.png" alt="image-20230804164618922"></p>
+<h2 id="ICP备案网"><a href="#ICP备案网" class="headerlink" title="ICP备案网"></a><a target="_blank" rel="noopener" href="https://icp.chinaz.com/">ICP备案网</a></h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041652685.png" alt="image-20230804165207717"></p>
+<h1 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h1><h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><ul>
+<li>Open：对外开放</li>
+<li>Closed：端口关闭状态</li>
+<li>Filtered：防火墙过滤或者网络堵塞</li>
+<li>Unfiltered：未被过滤，端口可访问，但是无法判断是开放还是关闭状态</li>
+<li>Open|Filtered：开放还是被过滤</li>
+<li>Closed|Filtered：不能确定是关闭还是被过滤，只可能出现在IPID Idle扫描中</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-T</td>
+<td>时序选项</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>端口扫描顺序</td>
+</tr>
+<tr>
+<td>-sS</td>
+<td>TCP SYN 扫描</td>
+</tr>
+<tr>
+<td>-sU</td>
+<td>UDP 扫描</td>
+</tr>
+<tr>
+<td>-sN;-sF;-sX</td>
+<td>隐蔽扫描</td>
+</tr>
+<tr>
+<td>-sA</td>
+<td>TCP ACK 扫描</td>
+</tr>
+<tr>
+<td>-sW</td>
+<td>TCP 窗口扫描</td>
+</tr>
+<tr>
+<td>-sM</td>
+<td>TCP Maimon 扫描</td>
+</tr>
+<tr>
+<td>–scanflags</td>
+<td>自定义 TCP 扫描</td>
+</tr>
+<tr>
+<td>-sl</td>
+<td>空闲扫描</td>
+</tr>
+<tr>
+<td>-sO</td>
+<td>IP 协议扫描</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>FTP Bounce 扫描</td>
+</tr>
+<tr>
+<td>sT</td>
+<td>TCP连接扫描</td>
+</tr>
+</tbody></table>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041710327.png" alt="image-20230804171002759"></p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041710674.png" alt="image-20230804171020167"></p>
+<h3 id="御剑端口扫描"><a href="#御剑端口扫描" class="headerlink" title="御剑端口扫描"></a>御剑端口扫描</h3><h3 id="在线端口检测"><a href="#在线端口检测" class="headerlink" title="在线端口检测"></a>在线端口检测</h3><h2 id="C段"><a href="#C段" class="headerlink" title="C段"></a>C段</h2><h3 id="网络空间引擎"><a href="#网络空间引擎" class="headerlink" title="网络空间引擎"></a>网络空间引擎</h3><h2 id="旁站"><a href="#旁站" class="headerlink" title="旁站"></a>旁站</h2><h3 id="IP反查域名"><a href="#IP反查域名" class="headerlink" title="IP反查域名"></a>IP反查域名</h3><h3 id="DNS反向解析记录"><a href="#DNS反向解析记录" class="headerlink" title="DNS反向解析记录"></a>DNS反向解析记录</h3><h1 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h1><h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><h3 id="多地ping"><a href="#多地ping" class="headerlink" title="多地ping"></a>多地ping</h3><h3 id="dig"><a href="#dig" class="headerlink" title="dig"></a>dig</h3><h3 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h3><h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><h2 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h2><h3 id="子域名"><a href="#子域名" class="headerlink" title="子域名"></a>子域名</h3><h3 id="DNS历史解析记录"><a href="#DNS历史解析记录" class="headerlink" title="DNS历史解析记录"></a>DNS历史解析记录</h3><h1 id="子域名-1"><a href="#子域名-1" class="headerlink" title="子域名"></a>子域名</h1><h2 id="子域名挖掘机"><a href="#子域名挖掘机" class="headerlink" title="子域名挖掘机"></a>子域名挖掘机</h2><h2 id="在线子域名爆破"><a href="#在线子域名爆破" class="headerlink" title="在线子域名爆破"></a>在线子域名爆破</h2><h2 id="subDomainBrute"><a href="#subDomainBrute" class="headerlink" title="subDomainBrute"></a>subDomainBrute</h2><h2 id="DNS历史记录"><a href="#DNS历史记录" class="headerlink" title="DNS历史记录"></a>DNS历史记录</h2><h2 id="网络空间引擎采集"><a href="#网络空间引擎采集" class="headerlink" title="网络空间引擎采集"></a>网络空间引擎采集</h2><h2 id="OneForall"><a href="#OneForall" class="headerlink" title="OneForall"></a>OneForall</h2><h1 id="敏感目录"><a href="#敏感目录" class="headerlink" title="敏感目录"></a>敏感目录</h1><h2 id="御剑后台扫描"><a href="#御剑后台扫描" class="headerlink" title="御剑后台扫描"></a>御剑后台扫描</h2><h2 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h2><h1 id="网络空间搜索"><a href="#网络空间搜索" class="headerlink" title="网络空间搜索"></a>网络空间搜索</h1><h2 id="fofa"><a href="#fofa" class="headerlink" title="fofa"></a>fofa</h2><h2 id="zoomeye"><a href="#zoomeye" class="headerlink" title="zoomeye"></a>zoomeye</h2><h2 id="鹰图"><a href="#鹰图" class="headerlink" title="鹰图"></a>鹰图</h2><h2 id="quake"><a href="#quake" class="headerlink" title="quake"></a>quake</h2><h2 id="shodan"><a href="#shodan" class="headerlink" title="shodan"></a>shodan</h2><h1 id="搜索引擎检索"><a href="#搜索引擎检索" class="headerlink" title="搜索引擎检索"></a>搜索引擎检索</h1><h2 id="google语法"><a href="#google语法" class="headerlink" title="google语法"></a>google语法</h2><h2 id="指纹识别"><a href="#指纹识别" class="headerlink" title="# 指纹识别"></a># 指纹识别</h2><h2 id="开发框架"><a href="#开发框架" class="headerlink" title="开发框架"></a>开发框架</h2><h3 id="struts"><a href="#struts" class="headerlink" title="struts"></a>struts</h3><h3 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h3><h2 id="web组件"><a href="#web组件" class="headerlink" title="web组件"></a>web组件</h2><h3 id="Wappalyzer"><a href="#Wappalyzer" class="headerlink" title="Wappalyzer"></a>Wappalyzer</h3><h2 id="cms识别"><a href="#cms识别" class="headerlink" title="cms识别"></a>cms识别</h2><h3 id="360指纹收录平台"><a href="#360指纹收录平台" class="headerlink" title="360指纹收录平台"></a>360指纹收录平台</h3><h3 id="云悉指纹识别"><a href="#云悉指纹识别" class="headerlink" title="云悉指纹识别"></a>云悉指纹识别</h3><h3 id="whatweb"><a href="#whatweb" class="headerlink" title="whatweb"></a>whatweb</h3><h3 id="潮汐指纹识别"><a href="#潮汐指纹识别" class="headerlink" title="潮汐指纹识别"></a>潮汐指纹识别</h3><h1 id="Whois"><a href="#Whois" class="headerlink" title="Whois"></a>Whois</h1><h2 id="站长工具"><a href="#站长工具" class="headerlink" title="站长工具"></a>站长工具</h2><h2 id="在线whois查询"><a href="#在线whois查询" class="headerlink" title="在线whois查询"></a>在线whois查询</h2><h1 id="敏感信息"><a href="#敏感信息" class="headerlink" title="敏感信息"></a>敏感信息</h1><h2 id="邮箱"><a href="#邮箱" class="headerlink" title="邮箱"></a>邮箱</h2><h2 id="身份认证信息"><a href="#身份认证信息" class="headerlink" title="身份认证信息"></a>身份认证信息</h2><h2 id="API-KEY"><a href="#API-KEY" class="headerlink" title="API KEY"></a>API KEY</h2><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><h2 id="社工"><a href="#社工" class="headerlink" title="社工"></a>社工</h2>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
