@@ -15,7 +15,7 @@
 
 
 
-<title>信息收集 | Hexo</title>
+<title>arp欺骗 | Hexo</title>
 
 
 
@@ -153,7 +153,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        信息收集
+        arp欺骗
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -214,111 +214,73 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        信息收集
+        arp欺骗
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-08-04 20:20:41</time>
+          <time>2023-08-08 00:47:49</time>
           <span class="text-gray-400">·</span>
           <span>2 min</span>
           <span class="text-gray-400">·</span>
-          <span>601 words</span>
+          <span>649 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h1><h2 id="企查查"><a href="#企查查" class="headerlink" title="企查查"></a><a target="_blank" rel="noopener" href="https://www.qcc.com/">企查查</a></h2><h2 id="爱企查"><a href="#爱企查" class="headerlink" title="爱企查"></a><a target="_blank" rel="noopener" href="https://aiqicha.baidu.com/">爱企查</a></h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041646171.png"></p>
-<h2 id="ICP备案网"><a href="#ICP备案网" class="headerlink" title="ICP备案网"></a><a target="_blank" rel="noopener" href="https://icp.chinaz.com/">ICP备案网</a></h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041652685.png"></p>
-<h1 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h1><h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><ul>
-<li>Open：对外开放</li>
-<li>Closed：端口关闭状态</li>
-<li>Filtered：防火墙过滤或者网络堵塞</li>
-<li>Unfiltered：未被过滤，端口可访问，但是无法判断是开放还是关闭状态</li>
-<li>Open|Filtered：开放还是被过滤</li>
-<li>Closed|Filtered：不能确定是关闭还是被过滤，只可能出现在IPID Idle扫描中</li>
+    <h1 id="ARP欺骗"><a href="#ARP欺骗" class="headerlink" title="ARP欺骗"></a>ARP欺骗</h1><p>​		要想进行局域网攻击，攻击设备和被攻击设备一定要在一个局域网中，即处于同一网段</p>
+<h2 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h2><p>地址解析协议，将IP地址转换为对应的mac地址，属链路层协议<br>数据包分为：</p>
+<p>请求包（广播）：本机IP地址、mac地址+目标主机IP地址<br>应答包（单播）：本机IP地址、mac地址+来源主机IP地址、mac地址	</p>
+<p>​	</p>
+<p>地址解析协议，即ARP（Address Resolution Protocol），是根据IP地址获取物理地址的一个TCP&#x2F;IP协议。主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。地址解析协议是建立在网络中各个主机互相信任的基础上的，局域网络上的主机可以自主发送ARP应答消息，其他主机收到应答报文时不会检测该报文的真实性就会将其记入本机ARP缓存；由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺骗。ARP命令可用于查询本机ARP缓存中IP地址和MAC地址的对应关系、添加或删除静态对应关系等。相关协议有RARP、代理ARP。NDP用于在IPv6中代替地址解析协议</p>
+<h2 id="ARP欺骗的基本原理"><a href="#ARP欺骗的基本原理" class="headerlink" title="ARP欺骗的基本原理"></a>ARP欺骗的基本原理</h2><p><img src="/arp%E6%AC%BA%E9%AA%97.assets/image-20230808004141908.png" alt="image-20230808004141908"></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
+<li>安装dsniff数据包</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-T</td>
-<td>时序选项</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>端口扫描顺序</td>
-</tr>
-<tr>
-<td>-sS</td>
-<td>TCP SYN 扫描</td>
-</tr>
-<tr>
-<td>-sU</td>
-<td>UDP 扫描</td>
-</tr>
-<tr>
-<td>-sN;-sF;-sX</td>
-<td>隐蔽扫描</td>
-</tr>
-<tr>
-<td>-sA</td>
-<td>TCP ACK 扫描</td>
-</tr>
-<tr>
-<td>-sW</td>
-<td>TCP 窗口扫描</td>
-</tr>
-<tr>
-<td>-sM</td>
-<td>TCP Maimon 扫描</td>
-</tr>
-<tr>
-<td>–scanflags</td>
-<td>自定义 TCP 扫描</td>
-</tr>
-<tr>
-<td>-sl</td>
-<td>空闲扫描</td>
-</tr>
-<tr>
-<td>-sO</td>
-<td>IP 协议扫描</td>
-</tr>
-<tr>
-<td>-b</td>
-<td>FTP Bounce 扫描</td>
-</tr>
-<tr>
-<td>sT</td>
-<td>TCP连接扫描</td>
-</tr>
-</tbody></table>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041710327.png"></p>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041710674.png"></p>
-<h3 id="御剑端口扫描"><a href="#御剑端口扫描" class="headerlink" title="御剑端口扫描"></a>御剑端口扫描</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041845466.png"></p>
-<h2 id="C段"><a href="#C段" class="headerlink" title="C段"></a>C段</h2><h3 id="网络空间引擎"><a href="#网络空间引擎" class="headerlink" title="网络空间引擎"></a>网络空间引擎</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041910281.png"></p>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041920334.png"></p>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041921410.png"></p>
-<h2 id="旁站"><a href="#旁站" class="headerlink" title="旁站"></a>旁站</h2><h3 id="IP反查域名"><a href="#IP反查域名" class="headerlink" title="IP反查域名"></a>IP反查域名</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041925255.png"></p>
-<h1 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h1><h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><h3 id="多地ping"><a href="#多地ping" class="headerlink" title="多地ping"></a>多地ping</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041935472.png"></p>
-<h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041942066.png"></p>
-<h1 id="子域名"><a href="#子域名" class="headerlink" title="子域名"></a>子域名</h1><h2 id="子域名挖掘机"><a href="#子域名挖掘机" class="headerlink" title="子域名挖掘机"></a>子域名挖掘机</h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041952022.png"></p>
-<h2 id="在线子域名爆破"><a href="#在线子域名爆破" class="headerlink" title="在线子域名爆破"></a>在线子域名爆破</h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041954121.png"></p>
-<h1 id="敏感目录"><a href="#敏感目录" class="headerlink" title="敏感目录"></a>敏感目录</h1><h2 id="dirb"><a href="#dirb" class="headerlink" title="dirb"></a>dirb</h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041958721.png"></p>
-<h2 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308042002044.png"></p>
-<h1 id="指纹识别"><a href="#指纹识别" class="headerlink" title="指纹识别"></a>指纹识别</h1><h2 id="开发框架"><a href="#开发框架" class="headerlink" title="开发框架"></a>开发框架</h2><h3 id="struts"><a href="#struts" class="headerlink" title="struts"></a>struts</h3><p>​		Struts是最早的java开源框架之一，它是MVC设计模式的一个优秀实现。 Struts定义了通用的Controller（控制器），通过配置文件（通常是 Struts -config.xml）隔离Model（模型）和View（视图），以Action的概念以对用户请求进行了封装，使代码更加清晰易读。 Struts还提供了自动将请求的数据填充到对象中以及页面标签等简化编码的工具</p>
-<h3 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h3><p>​		通过策略接口，Spring 框架是高度可配置的，而且包含多种视图技术，例如 JavaServer Pages（JSP）技术、Velocity、Tiles、iText和POI。Spring MVC 框架并不知道使用的视图，所以不会强迫开发者只使用 JSP 技术。Spring MVC 分离了控制器、模型对象、过滤器以及处理程序对象的角色，这种分离让它们更容易进行定制</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>​		Lifecycle for overriding binding, validation, etc，易于同其它View框架（Tiles等）无缝集成，采用IOC便于测试<br>​		它是一个典型的教科书式的mvc构架，而不像struts等都是变种或者不是完全基于mvc系统的框架，对于初学者或者想了解mvc的人来说我觉得 spring是最好的，它的实现就是教科书！第二它和tapestry一样是一个纯正的servlet系统，这也是它和tapestry相比 struts所具有的优势。而且框架本身有代码，看起来容易理解</p>
-<h2 id="cms识别"><a href="#cms识别" class="headerlink" title="cms识别"></a>cms识别</h2><h3 id="whatweb"><a href="#whatweb" class="headerlink" title="whatweb"></a>whatweb</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308042014035.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get insyall dsniff</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看本机网卡及IP地址</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>嗅探本机所在WLAN下所有设备的IP地址</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fping -g IP/24</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对目标主机进行ARP攻击</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i 网卡 -t 目标IP 网关</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>目标主机中输入查看ARP缓存</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在本机按下Ctrl+c停止攻击</p>
+</li>
+<li><p>目标主机ARP缓存恢复</p>
+</li>
+</ul>
+<h2 id="检测与防御"><a href="#检测与防御" class="headerlink" title="检测与防御"></a>检测与防御</h2><h4 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h4><ul>
+<li>网络频繁掉线</li>
+<li>网速突然变慢</li>
+<li>使用arp -a命令查看的网关mac地址与真实的网关mac地址不同</li>
+<li>使用嗅探软件发现局域网内存在大量arp应答包</li>
+</ul>
+<h4 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h4><ul>
+<li>绑定mac地址</li>
+<li>使用静态arp缓存表</li>
+<li>使用arp服务器，通过服务器来查找arp转换表来响应其他机器的广播</li>
+<li>使用arp欺骗防护软件</li>
+</ul>
 
   </article>
   <!-- tag -->
@@ -329,16 +291,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2023/08/07/mysql/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          mysql
-        </a>
-      
     </div>
     <div>
       
-        <a href="/2023/08/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          计算机基础
+        <a href="/2023/08/07/mysql/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          mysql
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
