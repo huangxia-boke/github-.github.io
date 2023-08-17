@@ -205,6 +205,10 @@
 
 <!-- toc -->
 
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
@@ -217,18 +221,235 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-08-12 10:19:10</time>
+          <time>2023-08-17 20:39:11</time>
           <span class="text-gray-400">·</span>
-          <span>1 min</span>
+          <span>8 min</span>
           <span class="text-gray-400">·</span>
-          <span>0 words</span>
+          <span>2.3k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    
+    <h1 id="PHP语句"><a href="#PHP语句" class="headerlink" title="PHP语句"></a>PHP语句</h1><p>PHP是一种在服务器端运行的开源的脚本语言。该语言让WEB开发人员快速书写动态生成的网页</p>
+<ul>
+<li><p>LAMP</p>
+<ul>
+<li>php是一门语言，用来做业务逻辑</li>
+<li>apache为PHP提供了运行环境</li>
+<li>linux为Apache的运行提供了平台</li>
+<li>mysql数据库用来存储数据</li>
+</ul>
+</li>
+<li><p>WAMP</p>
+<ul>
+<li>php是一门语言，用来做业务逻辑</li>
+<li>apache为PHP提供了运行环境</li>
+<li>windows为Apache的运行提供了平台</li>
+<li>mysql数据库用来存储数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="PHP的使用"><a href="#PHP的使用" class="headerlink" title="PHP的使用"></a>PHP的使用</h3><ul>
+<li>PHP可以生成动态页面内容</li>
+<li>PHP可以创建，打开，读取，写入，关闭服务器上的文件</li>
+<li>PHP可以收集表单数据</li>
+<li>PHP可以发送和接收cookies</li>
+<li>PHP可以添加，删除，修改您的数据库中的数据</li>
+<li>PHP可以限制用户访问您的网站上的一些页面</li>
+<li>PHP可以加密数据</li>
+</ul>
+<h3 id="BS架构和CS架构"><a href="#BS架构和CS架构" class="headerlink" title="BS架构和CS架构"></a>BS架构和CS架构</h3><ul>
+<li>BS：通过浏览器去访问服务器<ul>
+<li>B：browser（浏览器）</li>
+<li>S：server（服务器）</li>
+</ul>
+</li>
+</ul>
+<p>1.只要有浏览器就可以访问</p>
+<p>2.开发成本低</p>
+<p>3.开发的代码都放在服务器上</p>
+<ul>
+<li>CS：通过客户端软件去访问服务器<ul>
+<li>C：client（客户端）</li>
+<li>S：server（服务器）</li>
+</ul>
+</li>
+</ul>
+<p>1.可以开发客户端和服务器端，这时候就可以实现负载均衡</p>
+<p>2.必须要安装一个软件才能去访问</p>
+<p>3.开发成本高</p>
+<h2 id="PHP标记"><a href="#PHP标记" class="headerlink" title="PHP标记"></a>PHP标记</h2><ul>
+<li>ASP：&lt;% 代码 %&gt;</li>
+<li>简短：<? 代码 ?></li>
+<li>脚本：<script language="php"> 代码</script> </li>
+<li>XML：<? php 代码 ?></li>
+</ul>
+<h4 id="PHP输出语句"><a href="#PHP输出语句" class="headerlink" title="PHP输出语句"></a>PHP输出语句</h4><ul>
+<li>echo：输出</li>
+<li>print：输出，输出成功返回1</li>
+<li>print_r：输出数组，打印变量</li>
+<li>var_dump()：输出数据的详细信息，带有数据类型和数据长度</li>
+</ul>
+<h4 id="header函数"><a href="#header函数" class="headerlink" title="header函数"></a>header函数</h4><p><code>&lt;?php header(&#39;Content-Type:text/html:charset=utf-8&#39;);?&gt;</code>&#x2F;&#x2F;设置页面字符编码</p>
+<p><code>&lt;?php header(&#39;Location:http://www.baidu.com&#39;);?&gt;</code>&#x2F;&#x2F;重新导向指定的url</p>
+<h3 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h3><ul>
+<li>变量必须以$开头，$符不是变量的一部分，仅表示后面的标识符是变量名</li>
+<li>除了$以外，以字母、下划线开头，后面跟着数字、字母、下划线</li>
+<li>变量名区分大小写，$aa和$Aa是两个空间</li>
+</ul>
+<h3 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h3><table>
+<thead>
+<tr>
+<th>$_GET</th>
+<th>获取所有表单以get方式提交的数据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$_POST</td>
+<td>POST提交的数据都会保存在此</td>
+</tr>
+<tr>
+<td>$_REQUEST</td>
+<td>GET和POST提交的都会保存</td>
+</tr>
+<tr>
+<td>$GLOBALS</td>
+<td>PHP中所有的全局变量</td>
+</tr>
+<tr>
+<td>$_SERVER</td>
+<td>服务器信息</td>
+</tr>
+<tr>
+<td>$_SESSION</td>
+<td>session会话数据</td>
+</tr>
+<tr>
+<td>$COOKIE</td>
+<td>cookie会话数</td>
+</tr>
+<tr>
+<td>$_ENV</td>
+<td>环境信息</td>
+</tr>
+<tr>
+<td>$_FILES</td>
+<td>用户上传的文件信息</td>
+</tr>
+</tbody></table>
+<h3 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h3><ul>
+<li>变量传值的两种方式：值传递，引用传递（地址传递）<ul>
+<li>值传递：将变量保存的值赋值一份然后将新的值给另外一个变量保存：两个变量使用各自的内存，互不干扰</li>
+<li>引用传递：将变量保存的值所在的内存地址，传递给另外一个变量：两个变量指向同一块内存空间</li>
+</ul>
+</li>
+</ul>
+<p>传值：将一个表达式的值赋予另一个变量时，改变其中一个变量的值，将不会影响到另一个变量。拷贝新的内存</p>
+<p>传址：引用赋值，指新的变量简单的引用了原始变量。改变新的变量将影响到原始变量，反之亦然</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>PHP支持8种类型</p>
+<ul>
+<li>4种标量类型：boolean、integer、float&#x2F;double、string</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td>这是最简单的类型。只有两个值，真（true）和假（false）</td>
+</tr>
+<tr>
+<td>integer</td>
+<td>整形数据只能包含整数。这些数据类型可以是证书或负数</td>
+</tr>
+<tr>
+<td>float&#x2F;double</td>
+<td>浮点类型用于存储数字，和整形不同的是它有小数位</td>
+</tr>
+<tr>
+<td>string</td>
+<td>字符串就是连续的字符序列，可以是计算机所能表示的一切字符集合</td>
+</tr>
+</tbody></table>
+<ul>
+<li>2种复合类型：array、object</li>
+<li>2种特殊类型：resource、null</li>
+</ul>
+<h2 id="PHP控制语句"><a href="#PHP控制语句" class="headerlink" title="PHP控制语句"></a>PHP控制语句</h2><h4 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h4><p>​		代码从上往下，顺序执行。（代码执行的最基本结构）</p>
+<h4 id="分支结构（条件控制语句）"><a href="#分支结构（条件控制语句）" class="headerlink" title="分支结构（条件控制语句）"></a>分支结构（条件控制语句）</h4><p>​		给定一个条件，同时有多种可执行代码（块），然后会根据条件执行某一段代码</p>
+<ul>
+<li>if语句——在条件成立时执行代码</li>
+<li>if…else语句——在条件成立时执行一块代码，条件不成立时执行另一块代码</li>
+<li>if…elseif…else语句——在若干条件之一成立时执行一个代码块</li>
+<li>switch语句——在若干条件之一成立时执行一个代码块</li>
+</ul>
+<h4 id="循环结构（循环控制语句）"><a href="#循环结构（循环控制语句）" class="headerlink" title="循环结构（循环控制语句）"></a>循环结构（循环控制语句）</h4><p>​		在某个条件控制范围内，指定的代码（块）可以重复执行</p>
+<ul>
+<li>for循环——通过条件、起始和终止判断执行</li>
+<li>while循环——通过判断条件终止</li>
+<li>do-while循环——先执行一次循环体，再通过判断条件终止</li>
+<li>foreach循环——专门针对数组</li>
+</ul>
+<h5 id="跳转语句（break）"><a href="#跳转语句（break）" class="headerlink" title="跳转语句（break）"></a>跳转语句（break）</h5><p>​		break关键字可以终止当前的循环，包括while、do…while、for、foreach和switch在内的所有控制语句</p>
+<p>​		break语句不仅可以跳出当前的循环，还可以指定跳出几重循环</p>
+<h5 id="跳转语句（continue）"><a href="#跳转语句（continue）" class="headerlink" title="跳转语句（continue）"></a>跳转语句（continue）</h5><p>​		continue关键字没有break强大，它只能终止本次循环而进入到下次循环中</p>
+<p>​		continue也可以指定跳出几重循环</p>
+<p>​		如果在非循环结构中（例如if、switch语句中）使用continue，程序将会出错</p>
+<h2 id="PHP函数"><a href="#PHP函数" class="headerlink" title="PHP函数"></a>PHP函数</h2><p>函数：function，是一种语法结构，将实现某一个功能的代码块（多行代码）封装到一个结构中，从而实现代码的重复利用（复用）</p>
+<h4 id="PHP用户自定义函数"><a href="#PHP用户自定义函数" class="headerlink" title="PHP用户自定义函数"></a>PHP用户自定义函数</h4><ul>
+<li>除了内置的PHP函数，我们可以创建文明自己的函数</li>
+<li>函数是可以在程序中重复使用的语句块</li>
+<li>页面加载时函数不会立即执行</li>
+<li>函数只有在被调用时才会执行</li>
+</ul>
+<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><p>function 函数名（参数1，参数2，…）{函数体}</p>
+<ul>
+<li><p>function：为声明自定义函数的关键词</p>
+</li>
+<li><p>函数名：为自定义函数的名称</p>
+</li>
+<li><p>参数：为自定义参数的名称</p>
+</li>
+<li><p>函数体：为自定义函数的主体，是功能实现的部分</p>
+<p>​	当函数被定义好后，所要做的就是调用这个函数，调用函数只需要引用函数名称并赋予正确的参数即可</p>
+</li>
+</ul>
+<h5 id="函数间传递参数"><a href="#函数间传递参数" class="headerlink" title="函数间传递参数"></a>函数间传递参数</h5><p>​		当调用函数时，需要函数传递参数，被传入的参数称之为实参，而函数定义的参数为形参</p>
+<ul>
+<li>按值传递</li>
+</ul>
+<p>将实参的值复制到对应的形参中，在函数体内部操作针对形参进行，操作的结果不会影响到实参，即函数返回后，实参的值不会改变</p>
+<ul>
+<li>按地址传递</li>
+</ul>
+<p>将实参的存储地址传送给对应的形参，从而使得形参指针和实参指针指向同一个地址。因此，被调用函数中对形参指针所指向的地址中内容的任何改变都会影响到实参</p>
+<ul>
+<li>默认参数</li>
+</ul>
+<p>还有一种设置参数的方式，即可选参数。可以指定某个参数为可选参数，将可选参数放在参数的末尾，并且给它一个默认值</p>
+<ul>
+<li>return</li>
+</ul>
+<p>return将函数的值返回给函数的调用者，即将程序的控制权返回到调用者的作用域。如果全局作用域内使用return关键字，那么将终止本次的执行</p>
+<h3 id="函数递归"><a href="#函数递归" class="headerlink" title="函数递归"></a>函数递归</h3><p>递归函数即为自调用函数，在函数体内直接或间接自己调用自己，但需要设置自调用的条件，若满足条件，则调用函数本身，若不满足则终止本函数的自调用，然后把目前流程的主控权交回给上一层函数来执行</p>
+<h4 id="PHP数组"><a href="#PHP数组" class="headerlink" title="PHP数组"></a>PHP数组</h4><p>数组：array，数据的组合，指将一组数据（多个）存储到一个指定的容器中，用变量指向该容器，然后可以通过变量一次性得到该容器中的所有数据</p>
+<ul>
+<li>索引数组——带有数字索引的数组</li>
+<li>关联数组——带有指定键的数组</li>
+<li>多维数组——包含一个或多个数组的数组</li>
+</ul>
+<p>count()——获得数组的长度——</p>
+<p>is_array()——判断是否是数组</p>
+<p>array_search()——在数组中搜索给定的值，如果成功则返回相应的键名</p>
+<p>array_key_exists()——在给定的key存在于数组中时返回TRUE</p>
+<p>array_unshift()——将传入的单元插入到array数组的开头。注意单元是作为整体被插入的，因此传入单元将保持同样的顺序。所有的数值键名将修改为从零开始重新计数，所有的文字键名保持不变</p>
+<p>array_shift()——将array的第一个单元移出并作为结果返回，将array 的长度减─并将所有其它单元向前移动位。所有的数字键名将改为从零开始计数，文字键名将不变<br>alray_uniaue()——接受array作为输入并返回没有重复值的新数组。注意键名保留不变<br>in_array()——检查数组中是否存在某个值如果找到指定的值则返回TRUE，否则返回FALSE</p>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
