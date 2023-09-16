@@ -15,7 +15,7 @@
 
 
 
-<title>信息收集 | Hexo</title>
+<title>反序列化漏洞 | Hexo</title>
 
 
 
@@ -153,7 +153,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        信息收集
+        反序列化漏洞
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -214,111 +214,111 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        信息收集
+        反序列化漏洞
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-09-16 11:42:10</time>
+          <time>2023-09-16 11:42:00</time>
           <span class="text-gray-400">·</span>
           <span>2 min</span>
           <span class="text-gray-400">·</span>
-          <span>601 words</span>
+          <span>806 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h1><h2 id="企查查"><a href="#企查查" class="headerlink" title="企查查"></a><a target="_blank" rel="noopener" href="https://www.qcc.com/">企查查</a></h2><h2 id="爱企查"><a href="#爱企查" class="headerlink" title="爱企查"></a><a target="_blank" rel="noopener" href="https://aiqicha.baidu.com/">爱企查</a></h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041646171.png"></p>
-<h2 id="ICP备案网"><a href="#ICP备案网" class="headerlink" title="ICP备案网"></a><a target="_blank" rel="noopener" href="https://icp.chinaz.com/">ICP备案网</a></h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041652685.png"></p>
-<h1 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h1><h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><ul>
-<li>Open：对外开放</li>
-<li>Closed：端口关闭状态</li>
-<li>Filtered：防火墙过滤或者网络堵塞</li>
-<li>Unfiltered：未被过滤，端口可访问，但是无法判断是开放还是关闭状态</li>
-<li>Open|Filtered：开放还是被过滤</li>
-<li>Closed|Filtered：不能确定是关闭还是被过滤，只可能出现在IPID Idle扫描中</li>
+    <h3 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h3><p>​		序列化是将对象转换为字符串以便存储传输的一种方式。而反序列化恰好就是序列化的逆过程，反序列化会将字符串转换为对象供程序使用。在PHP中序列化和反序列化对应的函数分别为serialize()和unserialize()</p>
+<p>​		序列化的目的是方便数据的传输和存储，在PHP中，序列化和反序列化一般用做缓存，比如session缓存，cookie等</p>
+<h5 id="PHP面向对象编程"><a href="#PHP面向对象编程" class="headerlink" title="PHP面向对象编程"></a>PHP面向对象编程</h5><ul>
+<li>对象：可以对其做事情的一些东西。一个对象有状态、行为和标识三种属性</li>
+<li>类：一个共享相同结构和行为的对象的集合</li>
 </ul>
-<table>
+<p>每个类的定义都以关键字class开头，后面跟着类的名字。一个类可以包含有属于自己的变量，变量（称为“属性”）以及函数（“称为方法”）。类可能会包含一些特殊的函数叫magic函数，magic函数命名是以符号“”开头的，比如sleep,wakeup等。这些函数在某些情况下会自动调用，比如：construct当一个对象创建时调用（constructor）；destruct当一个对象被销毁时调用（destructor）；toString当一个对象被当作一个字符串时使用</p>
+<p><strong>创建一个简单的php对象</strong></p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309161018936.png" alt="image-20230916101815215"></p>
+<h4 id="常见的序列化格式"><a href="#常见的序列化格式" class="headerlink" title="常见的序列化格式"></a>常见的序列化格式</h4><ul>
+<li>二进制格式</li>
+<li>字节数组</li>
+<li>json字符串</li>
+<li>xml字符串</li>
+</ul>
+<h4 id="反序列化漏洞"><a href="#反序列化漏洞" class="headerlink" title="反序列化漏洞"></a>反序列化漏洞</h4><p>​		当程序在进行反序列化时，会自动调用一些函数，例如wakeup()，destruct()等函数，但是如果传入函数的参数可以被用户控制的话，用户可以输入一些恶意代码到函数中，从而导致反序列化漏洞</p>
+<h4 id="魔法函数"><a href="#魔法函数" class="headerlink" title="魔法函数"></a>魔法函数</h4><table>
 <thead>
 <tr>
-<th>选项</th>
-<th>解释</th>
+<th>_construct()</th>
+<th>创建对象时触发</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>-T</td>
-<td>时序选项</td>
+<td><strong>_destruct()</strong></td>
+<td><strong>对象销毁时触发</strong></td>
 </tr>
 <tr>
-<td>-p</td>
-<td>端口扫描顺序</td>
+<td><strong>call()</strong></td>
+<td><strong>在对象中调用不可访问的方法时触发</strong></td>
 </tr>
 <tr>
-<td>-sS</td>
-<td>TCP SYN 扫描</td>
+<td><strong>callStatic()</strong></td>
+<td><strong>在静态中调用不可访问的方法时触发</strong></td>
 </tr>
 <tr>
-<td>-sU</td>
-<td>UDP 扫描</td>
+<td><strong>get()</strong></td>
+<td><strong>用于从不可访问的属性读取数据</strong></td>
 </tr>
 <tr>
-<td>-sN;-sF;-sX</td>
-<td>隐蔽扫描</td>
+<td><strong>set()</strong></td>
+<td><strong>用于将数据写入不可访问的属性</strong></td>
 </tr>
 <tr>
-<td>-sA</td>
-<td>TCP ACK 扫描</td>
+<td><strong>isset()</strong></td>
+<td><strong>在不可访问的属性上调用isset()或empty()触发</strong></td>
 </tr>
 <tr>
-<td>-sW</td>
-<td>TCP 窗口扫描</td>
+<td><strong>unset()</strong></td>
+<td><strong>在不可访问的属性上使用unset()时触发</strong></td>
 </tr>
 <tr>
-<td>-sM</td>
-<td>TCP Maimon 扫描</td>
+<td><strong>invoke()</strong></td>
+<td><strong>当脚本尝试将对象调用为函数时触发</strong></td>
 </tr>
 <tr>
-<td>–scanflags</td>
-<td>自定义 TCP 扫描</td>
+<td><strong>wakeup()</strong></td>
+<td><strong>执行unserialize()时，先会调用这个函数</strong></td>
 </tr>
 <tr>
-<td>-sl</td>
-<td>空闲扫描</td>
-</tr>
-<tr>
-<td>-sO</td>
-<td>IP 协议扫描</td>
-</tr>
-<tr>
-<td>-b</td>
-<td>FTP Bounce 扫描</td>
-</tr>
-<tr>
-<td>sT</td>
-<td>TCP连接扫描</td>
+<td><strong>sleep()</strong></td>
+<td><strong>执行serialize()时，先会调用这个函数</strong></td>
 </tr>
 </tbody></table>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041710327.png"></p>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041710674.png"></p>
-<h3 id="御剑端口扫描"><a href="#御剑端口扫描" class="headerlink" title="御剑端口扫描"></a>御剑端口扫描</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041845466.png"></p>
-<h2 id="C段"><a href="#C段" class="headerlink" title="C段"></a>C段</h2><h3 id="网络空间引擎"><a href="#网络空间引擎" class="headerlink" title="网络空间引擎"></a>网络空间引擎</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041910281.png"></p>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041920334.png"></p>
-<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041921410.png"></p>
-<h2 id="旁站"><a href="#旁站" class="headerlink" title="旁站"></a>旁站</h2><h3 id="IP反查域名"><a href="#IP反查域名" class="headerlink" title="IP反查域名"></a>IP反查域名</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041925255.png"></p>
-<h1 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h1><h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><h3 id="多地ping"><a href="#多地ping" class="headerlink" title="多地ping"></a>多地ping</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041935472.png"></p>
-<h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041942066.png"></p>
-<h1 id="子域名"><a href="#子域名" class="headerlink" title="子域名"></a>子域名</h1><h2 id="子域名挖掘机"><a href="#子域名挖掘机" class="headerlink" title="子域名挖掘机"></a>子域名挖掘机</h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041952022.png"></p>
-<h2 id="在线子域名爆破"><a href="#在线子域名爆破" class="headerlink" title="在线子域名爆破"></a>在线子域名爆破</h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041954121.png"></p>
-<h1 id="敏感目录"><a href="#敏感目录" class="headerlink" title="敏感目录"></a>敏感目录</h1><h2 id="dirb"><a href="#dirb" class="headerlink" title="dirb"></a>dirb</h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308041958721.png"></p>
-<h2 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h2><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308042002044.png"></p>
-<h1 id="指纹识别"><a href="#指纹识别" class="headerlink" title="指纹识别"></a>指纹识别</h1><h2 id="开发框架"><a href="#开发框架" class="headerlink" title="开发框架"></a>开发框架</h2><h3 id="struts"><a href="#struts" class="headerlink" title="struts"></a>struts</h3><p>​		Struts是最早的java开源框架之一，它是MVC设计模式的一个优秀实现。 Struts定义了通用的Controller（控制器），通过配置文件（通常是 Struts -config.xml）隔离Model（模型）和View（视图），以Action的概念以对用户请求进行了封装，使代码更加清晰易读。 Struts还提供了自动将请求的数据填充到对象中以及页面标签等简化编码的工具</p>
-<h3 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h3><p>​		通过策略接口，Spring 框架是高度可配置的，而且包含多种视图技术，例如 JavaServer Pages（JSP）技术、Velocity、Tiles、iText和POI。Spring MVC 框架并不知道使用的视图，所以不会强迫开发者只使用 JSP 技术。Spring MVC 分离了控制器、模型对象、过滤器以及处理程序对象的角色，这种分离让它们更容易进行定制</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>​		Lifecycle for overriding binding, validation, etc，易于同其它View框架（Tiles等）无缝集成，采用IOC便于测试<br>​		它是一个典型的教科书式的mvc构架，而不像struts等都是变种或者不是完全基于mvc系统的框架，对于初学者或者想了解mvc的人来说我觉得 spring是最好的，它的实现就是教科书！第二它和tapestry一样是一个纯正的servlet系统，这也是它和tapestry相比 struts所具有的优势。而且框架本身有代码，看起来容易理解</p>
-<h2 id="cms识别"><a href="#cms识别" class="headerlink" title="cms识别"></a>cms识别</h2><h3 id="whatweb"><a href="#whatweb" class="headerlink" title="whatweb"></a>whatweb</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202308042014035.png"></p>
+<h4 id="序列化函数"><a href="#序列化函数" class="headerlink" title="序列化函数"></a>序列化函数</h4><p>​		当我们在php中创建了一个对象后，可以通过serialize()把这个对象转变成一个字符串，用于保存对象的值方便之后的传递与使用</p>
+<ul>
+<li>布尔型（bool）：b</li>
+<li>整数型（int）：i</li>
+<li>字符串型（str）：s</li>
+<li>数组型（array）：a</li>
+<li>对象型（object）：O</li>
+<li>NULL型：N</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309160935017.png" alt="image-20230916093454128"></p>
+<p>​		序列化后的内容只有成员变量，没有成员函数，比如下面的例子</p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309161011536.png" alt="image-20230916101134691"></p>
+<h3 id="打靶"><a href="#打靶" class="headerlink" title="打靶"></a>打靶</h3><p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309160957206.png" alt="image-20230916095701979"></p>
+<p>构造序列化提交</p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309161000451.png" alt="image-20230916100051128"></p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309161003842.png" alt="image-20230916100312383"></p>
+<h4 id="public、protected、private"><a href="#public、protected、private" class="headerlink" title="public、protected、private"></a>public、protected、private</h4><ul>
+<li>public : 被序列化的时候属性名 不会更改</li>
+<li>protected : 被序列化的时候属性名 会变成 %00*%00属性名</li>
+<li>private : 被序列化的时候属性名 会变成 %00类名%00属性名</li>
+</ul>
+<p>​		输出时一般需要url编码，若在本地存储更推荐采用base64编码的形式</p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309161009646.png" alt="image-20230916100922546"></p>
 
   </article>
   <!-- tag -->
@@ -326,7 +326,7 @@
     
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a>
+          <a href="/tags/%E6%BC%8F%E6%B4%9E/">漏洞</a>
         </span>
       
     
@@ -335,16 +335,16 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2023/08/07/mysql/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+        <a href="/2023/09/16/sqli%E9%80%9A%E5%85%B3%E7%A7%98%E7%B1%8D/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
           <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          mysql
+          sqli通关秘籍
         </a>
       
     </div>
     <div>
       
-        <a href="/2023/08/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          计算机基础
+        <a href="/2023/08/12/PHP/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          PHP
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
